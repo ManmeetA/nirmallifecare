@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState, type ReactNode } from 'react'
+import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
@@ -33,9 +34,23 @@ function Header() {
   const { openQuote } = useUI()
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
   useEffect(() => {
     setOpen(false)
   }, [pathname])
+
+  // While the menu is open: freeze page scroll and close on Escape.
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    document.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [open])
 
   return (
     <header className={`sticky top-0 z-40 transition-all duration-300 ${scrolled ? 'border-b border-line/70 bg-white/80 shadow-lg shadow-ink/5 backdrop-blur-xl' : 'border-b border-line bg-white'}`}>
@@ -63,12 +78,18 @@ function Header() {
         </button>
       </div>
 
+      {/* Portalled to <body>: the header's backdrop-blur would otherwise make it the
+          containing block for these fixed elements and squash them to header height. */}
+      {mounted && createPortal(
       <AnimatePresence>
         {open && (
           <>
-            <motion.div className="fixed inset-0 z-50 bg-ink/50 backdrop-blur-sm lg:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setOpen(false)} />
+            <motion.div className="fixed inset-0 z-[60] bg-ink/50 backdrop-blur-sm lg:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setOpen(false)} />
             <motion.aside
-              className="fixed inset-y-0 right-0 z-50 flex w-[86%] max-w-sm flex-col bg-white p-6 shadow-2xl lg:hidden"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Menu"
+              className="fixed inset-y-0 right-0 z-[60] flex w-[86%] max-w-sm flex-col overflow-y-auto bg-white p-6 shadow-2xl lg:hidden"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
@@ -100,7 +121,9 @@ function Header() {
             </motion.aside>
           </>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body,
+      )}
     </header>
   )
 }
