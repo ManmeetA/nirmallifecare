@@ -95,9 +95,9 @@ export default function ProductsTable() {
             <option value="">All categories</option>
             {cats.data?.map((c) => <option key={c.slug} value={c.slug}>{c.name}</option>)}
           </select>
-          <div className="flex rounded-xl border border-line p-1">
+          <div className="flex max-w-full overflow-x-auto rounded-xl border border-line p-1 [scrollbar-width:none]">
             {(['all', 'active', 'hidden', 'featured'] as Status[]).map((s) => (
-              <button key={s} onClick={() => setStatus(s)} className={`relative rounded-lg px-3 py-1.5 text-xs font-semibold capitalize transition ${status === s ? 'text-white' : 'text-muted hover:text-ink'}`}>
+              <button key={s} onClick={() => setStatus(s)} className={`relative shrink-0 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-semibold capitalize transition ${status === s ? 'text-white' : 'text-muted hover:text-ink'}`}>
                 {status === s && <motion.span layoutId="status-pill" className="absolute inset-0 rounded-lg bg-ink" />}
                 <span className="relative">{s} <span className="opacity-60">{counts[s]}</span></span>
               </button>

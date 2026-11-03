@@ -101,7 +101,7 @@ export function ProductRow({ product, index = 0 }: { product: Product; index?: n
       <Link href={href} aria-label={product.name}>
         <ProductMedia product={product} className="h-36 rounded-xl sm:h-full sm:min-h-32" artClass="size-20" />
       </Link>
-      <div>
+      <div className="min-w-0">
         <Link href={href} className="text-lg font-semibold hover:text-brand">
           {product.name}
         </Link>
@@ -114,7 +114,7 @@ export function ProductRow({ product, index = 0 }: { product: Product; index?: n
             <dt className="text-muted">Pack size</dt>
             <dd className="font-medium">{product.pack}</dd>
           </div>
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <dt className="text-muted">Composition</dt>
             <dd className="font-medium">{product.composition}</dd>
           </div>

@@ -51,7 +51,7 @@ export default function About() {
     <>
       <PageHero dark>
         <Breadcrumbs light items={[{ label: 'Home', to: '/' }, { label: 'About Us' }]} />
-        <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-tight sm:text-6xl">
+        <h1 className="mt-5 max-w-3xl break-words text-3xl font-extrabold min-[380px]:text-4xl leading-tight sm:text-6xl">
           Supplying quality medicines <span className="text-gradient">with care</span> since {site.since}.
         </h1>
         <p className="mt-5 max-w-xl text-lg text-white/70">[One-sentence positioning statement — who Nirmal LifeCare serves and what it supplies.]</p>
@@ -110,9 +110,9 @@ export default function About() {
         <Reveal delay={0.1}>
           <dl className="overflow-hidden rounded-2xl border border-line">
             {[...site.facts, { label: 'GSTIN', value: site.gst }, { label: 'Contact person', value: `${site.contactPerson}, ${site.designation}` }].map((f, i) => (
-              <div key={f.label} className={`grid grid-cols-[1fr_1.3fr] text-sm transition hover:bg-mint/50 ${i % 2 ? 'bg-white' : 'bg-mist/60'}`}>
-                <dt className="px-5 py-3.5 text-muted">{f.label}</dt>
-                <dd className="px-5 py-3.5 font-semibold">{f.value}</dd>
+              <div key={f.label} className={`grid text-sm transition hover:bg-mint/50 sm:grid-cols-[1fr_1.3fr] ${i % 2 ? 'bg-white' : 'bg-mist/60'}`}>
+                <dt className="px-4 pt-3 text-xs text-muted sm:px-5 sm:py-3.5 sm:text-sm">{f.label}</dt>
+                <dd className="break-words px-4 pb-3 pt-0.5 font-semibold sm:px-5 sm:py-3.5">{f.value}</dd>
               </div>
             ))}
           </dl>
@@ -134,9 +134,9 @@ export default function About() {
               <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-brand to-amber opacity-30 blur-xl" />
               <div className="relative grid size-40 place-items-center rounded-full bg-mint text-sm font-semibold text-brand ring-8 ring-white">[Director photo]</div>
             </div>
-            <figure>
-              <Quote className="size-10 text-amber" />
-              <blockquote className="mt-3 text-2xl font-bold leading-snug sm:text-3xl">“{site.directorMessage}”</blockquote>
+            <figure className="text-center md:text-left">
+              <Quote className="mx-auto size-10 text-amber md:mx-0" />
+              <blockquote className="mt-3 text-xl font-bold leading-snug sm:text-3xl">“{site.directorMessage}”</blockquote>
               <figcaption className="mt-4 text-muted"><span className="font-semibold text-ink">{site.director}</span> · Director, Nirmal LifeCare</figcaption>
             </figure>
           </div>

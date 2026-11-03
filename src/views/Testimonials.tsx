@@ -27,7 +27,7 @@ export default function Testimonials() {
         <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Testimonials' }]} />
         <div className="mt-4 grid items-end gap-8 lg:grid-cols-[1.5fr_1fr]">
           <div>
-            <h1 className="text-4xl font-extrabold sm:text-5xl">What buyers <span className="text-gradient">say about us</span></h1>
+            <h1 className="break-words text-3xl font-extrabold min-[380px]:text-4xl sm:text-5xl">What buyers <span className="text-gradient">say about us</span></h1>
             <p className="mt-4 max-w-xl text-lg text-muted">Feedback from pharmacies, hospitals and distributors we supply.</p>
           </div>
           <Reveal>

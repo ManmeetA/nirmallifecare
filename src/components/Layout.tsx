@@ -177,12 +177,12 @@ function DeveloperCredit() {
         <a
           href={phoneHref}
           title={`Call ${name} on ${phone}`}
-          className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] py-1.5 pl-1.5 pr-1.5 text-xs text-white/55 transition-all duration-300 hover:border-amber/40 hover:bg-white/[0.06] hover:text-white/80 hover:shadow-[0_0_30px_-6px_rgba(242,169,59,0.45)]"
+          className="group inline-flex max-w-full items-center gap-2 rounded-full sm:gap-3 border border-white/10 bg-white/[0.03] py-1.5 pl-1.5 pr-1.5 text-xs text-white/55 transition-all duration-300 hover:border-amber/40 hover:bg-white/[0.06] hover:text-white/80 hover:shadow-[0_0_30px_-6px_rgba(242,169,59,0.45)]"
         >
           <span className="grid size-7 place-items-center rounded-full bg-gradient-to-br from-amber to-amber-600 text-[11px] font-extrabold text-ink shadow-md shadow-amber/20">
             {name.slice(0, 1)}
           </span>
-          <span>
+          <span className="whitespace-nowrap max-[359px]:text-[11px]">
             Designed &amp; developed by <span className="font-semibold text-white">{name}</span>
           </span>
           <span className="flex items-center rounded-full bg-white/5 py-1 pl-1 pr-1 text-white/80 transition-all duration-300 group-hover:bg-amber group-hover:pr-3 group-hover:text-ink">
@@ -202,9 +202,9 @@ function MobileActionBar() {
   const { openQuote } = useUI()
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-3 gap-2 border-t border-line bg-white/90 p-2 backdrop-blur-xl md:hidden">
-      <a href={site.phoneHref} className="btn-ghost !px-2 !py-2.5"><Phone className="size-4" /> Call</a>
-      <a href={site.whatsappHref} target="_blank" rel="noreferrer" className="btn !px-2 !py-2.5 bg-[#25D366] text-white"><MessageCircle className="size-4" /> WhatsApp</a>
-      <button onClick={() => openQuote()} className="btn-primary !px-2 !py-2.5">Get quote</button>
+      <a href={site.phoneHref} className="btn-ghost !gap-1.5 !px-1 !py-2.5 max-[359px]:text-xs"><Phone className="size-4 shrink-0" /> Call</a>
+      <a href={site.whatsappHref} target="_blank" rel="noreferrer" className="btn !gap-1.5 !px-1 !py-2.5 bg-[#25D366] text-white max-[359px]:text-xs"><MessageCircle className="size-4 shrink-0" /> WhatsApp</a>
+      <button onClick={() => openQuote()} className="btn-primary !px-1 !py-2.5 max-[359px]:text-xs">Get quote</button>
     </div>
   )
 }

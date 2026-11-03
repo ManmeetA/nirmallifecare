@@ -90,13 +90,13 @@ export default function ProductDetail({ initialProduct, initialCategory }: { ini
                 <span className="text-sm text-muted">· Minimum order {p.moq ?? '[MOQ]'} {p.unit.toLowerCase()}{p.unit === 'Box' ? 'es' : 's'}</span>
               </div>
 
-              <div className="mt-6 grid grid-cols-3 gap-3 rounded-2xl border border-line p-4 text-sm">
+              <div className="mt-6 grid grid-cols-2 gap-3 rounded-2xl border border-line p-4 text-sm sm:grid-cols-3">
                 <div><p className="text-muted">Strength</p><p className="font-semibold">{p.strength}</p></div>
                 <div><p className="text-muted">Pack</p><p className="font-semibold">{p.pack}</p></div>
-                <div><p className="text-muted">Composition</p><p className="font-semibold">{p.composition}</p></div>
+                <div className="col-span-2 sm:col-span-1"><p className="text-muted">Composition</p><p className="font-semibold">{p.composition}</p></div>
               </div>
 
-              <div className="mt-6 grid gap-3 sm:grid-cols-[auto_auto_1fr]">
+              <div className="mt-6 grid grid-cols-[auto_1fr] gap-3 sm:grid-cols-[auto_auto_1fr]">
                 <div>
                   <label className="label" htmlFor="pd-qty">Quantity</label>
                   <div className="flex items-center rounded-xl border border-line">
@@ -111,7 +111,7 @@ export default function ProductDetail({ initialProduct, initialCategory }: { ini
                     {UNITS.map((x) => <option key={x}>{x}</option>)}
                   </select>
                 </div>
-                <div className="flex items-end">
+                <div className="col-span-2 flex items-end sm:col-span-1">
                   <button onClick={() => openQuote({ product: p, quantity: qty, unit: u })} className="btn-primary btn-shine w-full !py-3.5 text-base">Get best quote</button>
                 </div>
               </div>
@@ -120,7 +120,7 @@ export default function ProductDetail({ initialProduct, initialCategory }: { ini
                 <a href={`${site.whatsappHref}?text=${waText}`} target="_blank" rel="noreferrer" className="btn-ghost !py-3 hover:!border-[#25D366] hover:!text-[#128C7E]"><MessageCircle className="size-4" /> Chat on WhatsApp</a>
               </div>
 
-              <div className="mt-6 grid grid-cols-3 gap-3 rounded-2xl bg-mist p-4 text-sm">
+              <div className="mt-6 grid grid-cols-3 gap-2 rounded-2xl bg-mist p-3 text-xs sm:gap-3 sm:p-4 sm:text-sm">
                 {[
                   { Icon: CalendarClock, t: 'Batch & expiry', v: 'Shared on invoice' },
                   { Icon: Truck, t: 'Dispatch', v: site.dispatchDays },
@@ -180,7 +180,7 @@ export default function ProductDetail({ initialProduct, initialCategory }: { ini
                     ['Manufacturer', '[Manufacturer]'],
                     ['Storage', '[Storage conditions]'],
                   ].map(([k, v], i) => (
-                    <div key={k} className={`grid grid-cols-[180px_1fr] ${i % 2 ? 'bg-white' : 'bg-mist/60'}`}>
+                    <div key={k} className={`grid grid-cols-[110px_1fr] sm:grid-cols-[180px_1fr] ${i % 2 ? 'bg-white' : 'bg-mist/60'}`}>
                       <dt className="px-4 py-3 text-muted">{k}</dt>
                       <dd className="px-4 py-3 font-medium">{v}</dd>
                     </div>

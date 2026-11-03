@@ -22,7 +22,7 @@ export function LegalPage({ kind }: { kind: keyof typeof COPY }) {
     <>
       <PageHero>
         <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: c.title }]} />
-        <h1 className="mt-4 text-4xl font-extrabold">{c.title}</h1>
+        <h1 className="mt-4 break-words text-3xl font-extrabold min-[380px]:text-4xl">{c.title}</h1>
       </PageHero>
       <section className="container-x max-w-3xl space-y-4 py-10 leading-relaxed text-ink/80">
         {c.body.map((p) => <p key={p}>{p}</p>)}
@@ -38,7 +38,7 @@ export function Sitemap() {
     <>
       <PageHero>
         <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Sitemap' }]} />
-        <h1 className="mt-4 text-4xl font-extrabold">Sitemap</h1>
+        <h1 className="mt-4 break-words text-3xl font-extrabold min-[380px]:text-4xl">Sitemap</h1>
       </PageHero>
       <section className="container-x grid gap-10 py-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>

@@ -21,7 +21,7 @@ export function CategoryHero({ cat, search = false, q = '' }: { cat?: CategoryT;
   return (
     <PageHero>
       <Breadcrumbs items={search ? [{ label: 'Home', to: '/' }, { label: 'Search' }] : [{ label: 'Home', to: '/' }, { label: 'Products & Services', to: '/products' }, { label: cat?.name ?? '…' }]} />
-      <h1 className="mt-4 text-4xl font-extrabold sm:text-5xl">
+      <h1 className="mt-4 break-words text-3xl font-extrabold min-[380px]:text-4xl sm:text-5xl">
         {search ? <>Results for “<span className="text-gradient">{q}</span>”</> : cat ? `Pharmaceutical ${cat.name}` : <Skeleton className="h-12 w-80" />}
       </h1>
       {!search && cat && <p className="mt-4 max-w-2xl text-lg text-muted">{cat.description}</p>}
@@ -115,7 +115,7 @@ export default function Category({ search = false, initialCategory }: { search?:
       <div className="container-x grid gap-8 py-8 lg:grid-cols-[260px_1fr]">
         <aside className="hidden lg:block">{Sidebar}</aside>
 
-        <div>
+        <div className="min-w-0">
           <div className="mb-5 flex flex-wrap items-center gap-3">
             <p className="text-sm">
               <span className="font-bold">{res.data?.total ?? '…'}</span> products
@@ -127,8 +127,8 @@ export default function Category({ search = false, initialCategory }: { search?:
                 </motion.button>
               ))}
             </AnimatePresence>
-            <button onClick={() => setDrawer(true)} className="btn-ghost ml-auto !py-2 lg:hidden"><SlidersHorizontal className="size-4" /> Filters</button>
-            <label className="flex items-center gap-2 text-sm text-muted lg:ml-auto">
+            <button onClick={() => setDrawer(true)} className="btn-ghost !py-2 max-sm:order-last lg:hidden sm:ml-auto"><SlidersHorizontal className="size-4" /> Filters</button>
+            <label className="flex items-center gap-2 text-sm text-muted max-sm:order-last max-sm:ml-auto lg:ml-auto">
               Sort by
               <select className="field !w-auto !py-2" value={sort} onChange={(e) => update({ sort: e.target.value === 'relevance' ? null : e.target.value })}>
                 <option value="relevance">Relevance</option>
@@ -146,10 +146,10 @@ export default function Category({ search = false, initialCategory }: { search?:
                 {res.data.items.map((p, i) => <ProductRow key={p.slug} product={p} index={i} />)}
               </AnimatePresence>
             ) : (
-              <div className="card flex flex-col items-center p-12 text-center">
+              <div className="card flex flex-col items-center p-6 text-center sm:p-12">
                 <p className="text-lg font-semibold">No products match these filters.</p>
                 <p className="mt-1 text-muted">Try clearing a filter — or tell us what you need and we’ll source it.</p>
-                <div className="mt-6 flex gap-3">
+                <div className="mt-6 flex flex-wrap justify-center gap-3">
                   <button onClick={clear} className="btn-ghost">Clear filters</button>
                   <button onClick={() => openQuote({ requirement: q ? `Looking for: ${q}` : '' })} className="btn-primary">Send requirement</button>
                 </div>

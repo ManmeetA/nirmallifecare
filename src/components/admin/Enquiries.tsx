@@ -74,9 +74,9 @@ function Inner() {
       <PageHeader title="Enquiries" subtitle="Quote requests from the website’s forms. Newest first." />
       <Panel>
         <div className="flex flex-wrap items-center gap-3 border-b border-line p-4">
-          <div className="flex rounded-xl border border-line p-1">
+          <div className="flex max-w-full overflow-x-auto rounded-xl border border-line p-1 [scrollbar-width:none]">
             {TABS.map((t) => (
-              <button key={t.key} onClick={() => setTab(t.key)} className={`relative rounded-lg px-3.5 py-1.5 text-xs font-semibold transition ${tab === t.key ? 'text-white' : 'text-muted hover:text-ink'}`}>
+              <button key={t.key} onClick={() => setTab(t.key)} className={`relative shrink-0 whitespace-nowrap rounded-lg px-3.5 py-1.5 text-xs font-semibold transition ${tab === t.key ? 'text-white' : 'text-muted hover:text-ink'}`}>
                 {tab === t.key && <motion.span layoutId="enq-tab" className="absolute inset-0 rounded-lg bg-ink" />}
                 <span className="relative">{t.label} <span className="opacity-60">{count(t.key)}</span></span>
               </button>

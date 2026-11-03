@@ -34,7 +34,7 @@ export default function Products() {
     <>
       <PageHero>
         <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Products & Services' }]} />
-        <h1 className="mt-4 text-4xl font-extrabold sm:text-5xl">
+        <h1 className="mt-4 break-words text-3xl font-extrabold min-[380px]:text-4xl sm:text-5xl">
           Products <span className="text-gradient">&</span> Services
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-muted">Browse our full range by category. Every product page lists strength, pack size and rate — send an enquiry for bulk pricing.</p>
@@ -57,7 +57,7 @@ export default function Products() {
           !c ? (
             <Skeleton key={i} className="h-72" />
           ) : (
-            <Reveal key={c.slug} delay={(i % 2) * 0.08}>
+            <Reveal key={c.slug} delay={(i % 2) * 0.08} className="min-w-0">
               <section id={c.slug} data-cat={c.slug} className="group card scroll-mt-36 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-brand/10">
                 <div className="grid sm:grid-cols-[200px_1fr]">
                   <Link href={`/products/${c.slug}`} className="relative grid min-h-44 place-items-center overflow-hidden bg-gradient-to-br from-mist to-mint">

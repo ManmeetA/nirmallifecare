@@ -54,7 +54,7 @@ export default function Contact() {
     <>
       <PageHero>
         <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Contact Us' }]} />
-        <h1 className="mt-4 text-4xl font-extrabold sm:text-5xl">Let’s talk about <span className="text-gradient">your requirement</span></h1>
+        <h1 className="mt-4 break-words text-3xl font-extrabold min-[380px]:text-4xl sm:text-5xl">Let’s talk about <span className="text-gradient">your requirement</span></h1>
         <p className="mt-4 max-w-xl text-lg text-muted">Call, WhatsApp or send the form — we reply with rates and availability.</p>
       </PageHero>
 

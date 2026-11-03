@@ -42,7 +42,7 @@ function Hero() {
 
       <div className="container-x relative grid items-center gap-10 pb-8 pt-6 lg:grid-cols-[1.1fr_1fr] lg:pt-8">
         <div>
-          <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-white/70 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-brand backdrop-blur">
+          <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-brand/20 bg-white/70 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-brand backdrop-blur sm:px-3.5 sm:text-xs sm:tracking-[0.16em]">
             <span className="relative flex size-2"><span className="absolute inset-0 animate-ping rounded-full bg-brand/60" /><span className="relative size-2 rounded-full bg-brand" /></span>
             Pharmaceutical trader & exporter
           </motion.span>
@@ -157,22 +157,23 @@ function Categories() {
   return (
     <section className="container-x py-12">
       <SectionHeading eyebrow="Shop by category" title="Our product range" action={<Link href="/products" className="group flex items-center gap-1 text-sm font-semibold text-brand">View all categories <ChevronRight className="size-4 transition group-hover:translate-x-1" /></Link>} />
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
         {(cats.data ?? Array.from({ length: 8 })).map((c, i) =>
           !c ? (
-            <Skeleton key={i} className="h-24" />
+            <Skeleton key={i} className="h-32 sm:h-24" />
           ) : (
-            <Reveal key={c.slug} delay={i * 0.05}>
-              <Link href={`/products/${c.slug}`} className="group card relative flex items-center gap-4 overflow-hidden p-4 transition-all duration-300 hover:-translate-y-1 hover:border-brand hover:shadow-xl hover:shadow-brand/10 sm:p-5">
+            <Reveal key={c.slug} delay={i * 0.05} className="h-full">
+              {/* Phones: icon above text so long names get the full tile width. sm+: icon beside text. */}
+              <Link href={`/products/${c.slug}`} className="group card relative flex h-full flex-col items-start gap-3 overflow-hidden p-4 transition-all duration-300 hover:-translate-y-1 hover:border-brand hover:shadow-xl hover:shadow-brand/10 sm:flex-row sm:items-center sm:gap-4 sm:p-5">
                 <span className="absolute inset-0 origin-left scale-x-0 bg-gradient-to-r from-brand to-brand-400 transition-transform duration-500 group-hover:scale-x-100" />
-                <span className="relative grid size-12 shrink-0 place-items-center rounded-xl bg-mist font-bold text-brand transition-colors group-hover:bg-white/15 group-hover:text-white">
-                  <ProductArt form={c.form} className="size-9" />
+                <span className="relative grid size-11 shrink-0 place-items-center rounded-xl bg-mist font-bold text-brand transition-colors group-hover:bg-white/15 group-hover:text-white sm:size-12">
+                  <ProductArt form={c.form} className="size-8 sm:size-9" />
                 </span>
                 <span className="relative min-w-0">
-                  <span className="block font-semibold leading-snug transition-colors group-hover:text-white">{c.name}</span>
-                  <span className="block text-xs text-muted transition-colors group-hover:text-white/80">{counts.data?.[c.slug] ?? '–'} products</span>
+                  <span className="block text-sm font-semibold leading-snug transition-colors group-hover:text-white sm:text-base">{c.name}</span>
+                  <span className="mt-0.5 block whitespace-nowrap text-xs text-muted transition-colors group-hover:text-white/80">{counts.data?.[c.slug] ?? '–'} products</span>
                 </span>
-                <ArrowRight className="relative ml-auto size-4 shrink-0 -translate-x-2 text-white opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
+                <ArrowRight className="relative ml-auto hidden size-4 shrink-0 -translate-x-2 text-white opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100 sm:block" />
               </Link>
             </Reveal>
           ),
@@ -200,9 +201,9 @@ function Popular() {
           eyebrow="Featured"
           title="Popular products"
           action={
-            <div className="flex flex-wrap gap-2 rounded-full border border-line bg-white p-1">
+            <div className="flex w-full gap-1 overflow-x-auto rounded-full border border-line bg-white p-1 [scrollbar-width:none] sm:w-auto">
               {TABS.map((t) => (
-                <button key={t.key} onClick={() => setTab(t.key)} className={`relative rounded-full px-4 py-2 text-sm font-medium transition ${tab === t.key ? 'text-white' : 'text-ink hover:text-brand'}`}>
+                <button key={t.key} onClick={() => setTab(t.key)} className={`relative grow whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition sm:grow-0 sm:px-4 ${tab === t.key ? 'text-white' : 'text-ink hover:text-brand'}`}>
                   {tab === t.key && <motion.span layoutId="tab-pill" className="absolute inset-0 rounded-full bg-ink" transition={{ type: 'spring', stiffness: 400, damping: 30 }} />}
                   <span className="relative">{t.label}</span>
                 </button>
@@ -255,9 +256,9 @@ function Welcome() {
         <Reveal delay={0.15}>
           <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-3">
             {site.facts.map((f) => (
-              <div key={f.label} className="group bg-ink p-5 transition hover:bg-ink-2 sm:p-6">
+              <div key={f.label} className="group min-w-0 bg-ink p-4 transition hover:bg-ink-2 sm:p-6">
                 <p className="text-xs text-white/50">{f.label}</p>
-                <p className="mt-2 font-semibold text-white transition group-hover:text-amber">{f.value}</p>
+                <p className="mt-2 break-words text-sm font-semibold text-white transition group-hover:text-amber sm:text-base">{f.value}</p>
               </div>
             ))}
           </div>
