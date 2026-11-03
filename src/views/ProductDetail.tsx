@@ -3,13 +3,14 @@
 import { useState } from 'react'
 import { notFound, useParams } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
-import { AlertTriangle, CalendarClock, CreditCard, FileCheck2, MessageCircle, Minus, Phone, Plus, Share2, Truck } from 'lucide-react'
+import { AlertTriangle, CalendarClock, CreditCard, FileCheck2, Minus, Phone, Plus, Share2, Truck } from 'lucide-react'
 import { api } from '../lib/api'
 import { formatPrice, useAsync } from '../lib/hooks'
 import type { Category, Product, Unit } from '../lib/types'
 import { site } from '../data/site'
 import { useUI } from '../context/ui'
 import { ProductCard, ProductMedia, formLabel } from '../components/ProductCard'
+import WhatsAppIcon from '../components/WhatsAppIcon'
 import { Breadcrumbs, Reveal, Skeleton, Tilt } from '../components/primitives'
 
 const UNITS: Unit[] = ['Box', 'Strip', 'Vial', 'Bottle', 'Piece', 'Tube']
@@ -41,7 +42,7 @@ export default function ProductDetail({ initialProduct, initialCategory }: { ini
     }
   }
 
-  const waText = encodeURIComponent(`Hello Nirmal LifeCare, I'd like a quote for ${qty} ${u} of ${p?.name ?? ''}.`)
+  const waText = encodeURIComponent(`Hello Nirmal Lifecare, I'd like a quote for ${qty} ${u} of ${p?.name ?? ''}.`)
 
   return (
     <>
@@ -117,7 +118,7 @@ export default function ProductDetail({ initialProduct, initialCategory }: { ini
               </div>
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
                 <a href={site.phoneHref} className="btn-ghost !py-3"><Phone className="size-4" /> Call {site.phone}</a>
-                <a href={`${site.whatsappHref}?text=${waText}`} target="_blank" rel="noreferrer" className="btn-ghost !py-3 hover:!border-[#25D366] hover:!text-[#128C7E]"><MessageCircle className="size-4" /> Chat on WhatsApp</a>
+                <a href={`${site.whatsappHref}?text=${waText}`} target="_blank" rel="noreferrer" className="btn-ghost !py-3 hover:!border-[#25D366] hover:!text-[#128C7E]"><WhatsAppIcon className="size-[18px] text-[#25D366]" /> Chat on WhatsApp</a>
               </div>
 
               <div className="mt-6 grid grid-cols-3 gap-2 rounded-2xl bg-mist p-3 text-xs sm:gap-3 sm:p-4 sm:text-sm">

@@ -2,11 +2,12 @@
 
 import { useState, type FormEvent } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Check, ChevronRight, Clock, Loader2, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
+import { Check, ChevronRight, Clock, Loader2, Mail, MapPin, Phone } from 'lucide-react'
 import { api } from '../lib/api'
 import { isValidEmail, isValidMobile } from '../lib/hooks'
 import type { BuyerType } from '../lib/types'
 import { site } from '../data/site'
+import WhatsAppIcon from '../components/WhatsAppIcon'
 import { Breadcrumbs, PageHero, Reveal } from '../components/primitives'
 
 const BUYER_TYPES: BuyerType[] = ['Retail pharmacy', 'Hospital', 'Distributor', 'Wholesaler', 'Nursing home', 'Other']
@@ -68,7 +69,7 @@ export default function Contact() {
                 <span className="grid size-14 place-items-center rounded-2xl bg-white/10 text-lg font-bold">NL</span>
                 <div>
                   <p className="text-xl font-bold">{site.contactPerson}</p>
-                  <p className="text-sm text-white/60">{site.designation} · Nirmal LifeCare</p>
+                  <p className="text-sm text-white/60">{site.designation} · Nirmal Lifecare</p>
                 </div>
               </div>
               <p className="relative mt-5 flex items-center gap-2 text-sm text-white/70"><Clock className="size-4 text-amber" /> Replies within {site.replyWithin}</p>
@@ -117,7 +118,7 @@ export default function Contact() {
                   <div><label className="label" htmlFor="c-req">Describe your requirement</label><textarea id="c-req" rows={4} className="field resize-none" placeholder="Product names, strength and quantity" value={f.requirement} onChange={(e) => set('requirement', e.target.value)} />{err('requirement')}</div>
                   <label className="flex cursor-pointer items-center gap-3 text-sm">
                     <input type="checkbox" className="size-4 accent-[var(--color-brand)]" checked={f.whatsapp} onChange={(e) => set('whatsapp', e.target.checked)} />
-                    <MessageCircle className="size-4 text-[#25D366]" /> Contact me on WhatsApp too
+                    <WhatsAppIcon className="size-4 text-[#25D366]" /> Contact me on WhatsApp too
                   </label>
                   {errors.form && <p className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">{errors.form}</p>}
                   <button type="submit" disabled={status === 'sending'} className="btn-primary btn-shine w-full !py-3.5 text-base">
@@ -134,7 +135,7 @@ export default function Contact() {
         <Reveal>
           {/* Replace the query with the business's exact address or a Google Maps embed URL */}
           <div className="overflow-hidden rounded-3xl border border-line shadow-xl shadow-brand/5">
-            <iframe title="Nirmal LifeCare location" src="https://www.google.com/maps?q=India&z=5&output=embed" className="h-96 w-full grayscale-[30%]" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+            <iframe title="Nirmal Lifecare location" src="https://www.google.com/maps?q=India&z=5&output=embed" className="h-96 w-full grayscale-[30%]" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
           </div>
         </Reveal>
       </section>

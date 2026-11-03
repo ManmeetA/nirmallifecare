@@ -1,4 +1,4 @@
-# Nirmal LifeCare — website & admin
+# Nirmal Lifecare — website & admin
 
 Pharmaceutical trader & exporter website, built from `Nirmal-Life-Care-Website-Mockups.pdf` (v1, Oct 2026),
 with an admin panel for managing products and buyer enquiries.

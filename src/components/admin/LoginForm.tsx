@@ -62,7 +62,7 @@ export default function LoginForm() {
         <motion.form onSubmit={submit} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-sm">
           <div className="lg:hidden"><Logo sub={false} /></div>
           <h2 className="mt-8 text-3xl font-bold lg:mt-0">Welcome back</h2>
-          <p className="mt-2 text-muted">Sign in to the Nirmal LifeCare admin.</p>
+          <p className="mt-2 text-muted">Sign in to the Nirmal Lifecare admin.</p>
 
           <label className="label mt-8" htmlFor="email">Email</label>
           <div className="relative">

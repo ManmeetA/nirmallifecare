@@ -54,7 +54,7 @@ export default function About() {
         <h1 className="mt-5 max-w-3xl break-words text-3xl font-extrabold min-[380px]:text-4xl leading-tight sm:text-6xl">
           Supplying quality medicines <span className="text-gradient">with care</span> since {site.since}.
         </h1>
-        <p className="mt-5 max-w-xl text-lg text-white/70">[One-sentence positioning statement — who Nirmal LifeCare serves and what it supplies.]</p>
+        <p className="mt-5 max-w-xl text-lg text-white/70">[One-sentence positioning statement — who Nirmal Lifecare serves and what it supplies.]</p>
       </PageHero>
 
       <section className="container-x grid items-center gap-12 py-12 lg:grid-cols-2">
@@ -137,7 +137,7 @@ export default function About() {
             <figure className="text-center md:text-left">
               <Quote className="mx-auto size-10 text-amber md:mx-0" />
               <blockquote className="mt-3 text-xl font-bold leading-snug sm:text-3xl">“{site.directorMessage}”</blockquote>
-              <figcaption className="mt-4 text-muted"><span className="font-semibold text-ink">{site.director}</span> · Director, Nirmal LifeCare</figcaption>
+              <figcaption className="mt-4 text-muted"><span className="font-semibold text-ink">{site.director}</span> · Director, Nirmal Lifecare</figcaption>
             </figure>
           </div>
         </Reveal>

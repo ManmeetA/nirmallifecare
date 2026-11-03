@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!p) return { title: 'Product' }
   return {
     title: p.name,
-    description: `${p.name} — ${p.composition}, ${p.strength}, ${p.pack}. Bulk supply from Nirmal LifeCare; send an enquiry for the best price.`,
+    description: `${p.name} — ${p.composition}, ${p.strength}, ${p.pack}. Bulk supply from Nirmal Lifecare; send an enquiry for the best price.`,
     openGraph: p.images?.[0] ? { images: [p.images[0]] } : undefined,
   }
 }

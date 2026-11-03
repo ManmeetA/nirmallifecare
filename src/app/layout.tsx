@@ -6,9 +6,9 @@ import './globals.css'
 const poppins = Poppins({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700', '800'], variable: '--font-poppins', display: 'swap' })
 
 export const metadata: Metadata = {
-  title: { default: 'Nirmal LifeCare — Pharmaceutical Trader & Exporter', template: '%s · Nirmal LifeCare' },
-  description: 'Nirmal LifeCare — pharmaceutical trader & exporter. Tablets, capsules, injections and speciality medicines with bulk pricing across India and overseas.',
-  openGraph: { siteName: 'Nirmal LifeCare', type: 'website', locale: 'en_IN' },
+  title: { default: 'Nirmal Lifecare — Pharmaceutical Trader & Exporter', template: '%s · Nirmal Lifecare' },
+  description: 'Nirmal Lifecare — pharmaceutical trader & exporter. Tablets, capsules, injections and speciality medicines with bulk pricing across India and overseas.',
+  openGraph: { siteName: 'Nirmal Lifecare', type: 'website', locale: 'en_IN' },
 }
 
 export const viewport: Viewport = { themeColor: '#0f2a2a' }

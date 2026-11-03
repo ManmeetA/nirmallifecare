@@ -3,11 +3,12 @@
 import { Suspense, useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Building2, ChevronDown, Globe2, Inbox, Mail, MessageCircle, Package, Phone, Search, Trash2 } from 'lucide-react'
+import { Building2, ChevronDown, Globe2, Inbox, Mail, Package, Phone, Search, Trash2 } from 'lucide-react'
 import { adminApi } from '@/lib/admin-api'
 import { useAsync } from '@/lib/hooks'
 import type { EnquiryRecord, EnquiryStatus } from '@/lib/types'
 import { useUI } from '@/context/ui'
+import WhatsAppIcon from '../WhatsAppIcon'
 import { Badge, ConfirmDialog, EmptyState, PageHeader, Panel, timeAgo } from './ui'
 
 const TABS: { key: EnquiryStatus | 'all'; label: string }[] = [
@@ -98,7 +99,7 @@ function Inner() {
           <ul className="divide-y divide-line">
             {list.map((e) => {
               const isOpen = open === e.id
-              const wa = `https://wa.me/${digits(e.mobile)}?text=${encodeURIComponent(`Hello${e.name ? ` ${e.name}` : ''}, this is Nirmal LifeCare regarding your enquiry: ${e.requirement.slice(0, 120)}`)}`
+              const wa = `https://wa.me/${digits(e.mobile)}?text=${encodeURIComponent(`Hello${e.name ? ` ${e.name}` : ''}, this is Nirmal Lifecare regarding your enquiry: ${e.requirement.slice(0, 120)}`)}`
               return (
                 <li key={e.id} className={isOpen ? 'bg-mist/30' : ''}>
                   <button onClick={() => setOpen(isOpen ? null : e.id)} className="flex w-full items-start gap-3 px-5 py-4 text-left transition hover:bg-mist/40" aria-expanded={isOpen}>
@@ -134,8 +135,8 @@ function Inner() {
                             <p className="text-xs text-muted">Received {new Date(e.createdAt).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })}</p>
                             <div className="flex flex-wrap gap-2 pt-2">
                               <a href={`tel:${e.mobile.replace(/\s/g, '')}`} className="btn-ghost !px-3 !py-2 text-xs"><Phone className="size-3.5" /> Call</a>
-                              <a href={wa} target="_blank" rel="noreferrer" className="btn !px-3 !py-2 text-xs bg-[#25D366] text-white"><MessageCircle className="size-3.5" /> WhatsApp</a>
-                              {e.email && <a href={`mailto:${e.email}?subject=${encodeURIComponent('Your enquiry — Nirmal LifeCare')}`} className="btn-ghost !px-3 !py-2 text-xs"><Mail className="size-3.5" /> Email</a>}
+                              <a href={wa} target="_blank" rel="noreferrer" className="btn !px-3 !py-2 text-xs bg-[#25D366] text-white"><WhatsAppIcon className="size-3.5" /> WhatsApp</a>
+                              {e.email && <a href={`mailto:${e.email}?subject=${encodeURIComponent('Your enquiry — Nirmal Lifecare')}`} className="btn-ghost !px-3 !py-2 text-xs"><Mail className="size-3.5" /> Email</a>}
                             </div>
                           </div>
                           <div className="space-y-3">

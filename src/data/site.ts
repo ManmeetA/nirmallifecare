@@ -1,7 +1,7 @@
 // Company details. Values in [brackets] are placeholders from the mockup —
 // replace them with the client's real content (or serve them from the backend).
 export const site = {
-  name: 'Nirmal LifeCare',
+  name: 'Nirmal Lifecare',
   tagline: 'Pharmaceutical trader & exporter',
   blurb: 'Trader and exporter of pharmaceutical tablets, capsules, injections and speciality medicines.',
   phone: '[+91 XXXXX XXXXX]',

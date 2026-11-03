@@ -1,4 +1,4 @@
--- Nirmal LifeCare — initial schema.
+-- Nirmal Lifecare — initial schema.
 -- Run in the Supabase SQL editor (or `supabase db push`), then run supabase/seed.sql.
 --
 -- Access model (enforced by RLS, not by the app):

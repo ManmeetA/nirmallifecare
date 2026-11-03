@@ -249,7 +249,7 @@ function Welcome() {
       <div className="container-x relative grid items-center gap-12 lg:grid-cols-2">
         <Reveal>
           <p className="eyebrow !text-amber">Welcome to</p>
-          <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Nirmal LifeCare</h2>
+          <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Nirmal Lifecare</h2>
           <p className="mt-5 max-w-lg leading-relaxed text-white/70">{site.intro}</p>
           <Link href="/about" className="btn mt-8 border border-amber text-amber hover:bg-amber hover:text-ink">Read our story <ArrowRight className="size-4" /></Link>
         </Reveal>

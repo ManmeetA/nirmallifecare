@@ -32,7 +32,7 @@ function Sidebar({ email, newCount, onNavigate }: { email: string; newCount: num
         <div className="absolute -right-10 -top-10 size-40 rounded-full bg-brand/40 blur-3xl" />
         <div className="relative">
           <Logo light sub={false} />
-          <p className="ml-[52px] mt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-amber">Admin</p>
+          <p className="mt-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-amber">Admin</p>
         </div>
       </div>
       <nav className="flex-1 space-y-1 px-3" aria-label="Admin">

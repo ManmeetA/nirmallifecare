@@ -5,12 +5,13 @@ import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
-import { ArrowUp, Facebook, Linkedin, Mail, Menu, MessageCircle, Phone, X } from 'lucide-react'
+import { ArrowUp, Facebook, Linkedin, Mail, Menu, Phone, X } from 'lucide-react'
 import { site } from '../data/site'
 import { useScrolled } from '../lib/hooks'
 import { useUI } from '../context/ui'
 import { Logo } from './primitives'
 import SearchBox from './SearchBox'
+import WhatsAppIcon from './WhatsAppIcon'
 
 const NAV = [
   { to: '/', label: 'Home' },
@@ -140,7 +141,7 @@ function Footer() {
             {[
               { href: site.socials.facebook, Icon: Facebook, label: 'Facebook' },
               { href: site.socials.linkedin, Icon: Linkedin, label: 'LinkedIn' },
-              { href: site.whatsappHref, Icon: MessageCircle, label: 'WhatsApp' },
+              { href: site.whatsappHref, Icon: WhatsAppIcon, label: 'WhatsApp' },
             ].map(({ href, Icon, label }) => (
               <a key={label} href={href} aria-label={label} target="_blank" rel="noreferrer" className="grid size-10 place-items-center rounded-xl border border-white/15 transition hover:-translate-y-1 hover:border-amber hover:text-amber">
                 <Icon className="size-4" />
@@ -177,7 +178,7 @@ function Footer() {
       </div>
       <div className="relative border-t border-white/10">
         <div className="container-x flex flex-col gap-3 py-5 text-xs sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Nirmal LifeCare. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Nirmal Lifecare. All rights reserved.</p>
           <div className="flex gap-5">
             <Link href="/privacy" className="underline-offset-4 hover:text-white hover:underline">Privacy policy</Link>
             <Link href="/terms" className="underline-offset-4 hover:text-white hover:underline">Terms of use</Link>
@@ -226,7 +227,7 @@ function MobileActionBar() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-3 gap-2 border-t border-line bg-white/90 p-2 backdrop-blur-xl md:hidden">
       <a href={site.phoneHref} className="btn-ghost !gap-1.5 !px-1 !py-2.5 max-[359px]:text-xs"><Phone className="size-4 shrink-0" /> Call</a>
-      <a href={site.whatsappHref} target="_blank" rel="noreferrer" className="btn !gap-1.5 !px-1 !py-2.5 bg-[#25D366] text-white max-[359px]:text-xs"><MessageCircle className="size-4 shrink-0" /> WhatsApp</a>
+      <a href={site.whatsappHref} target="_blank" rel="noreferrer" className="btn !gap-1.5 !px-1 !py-2.5 bg-[#25D366] text-white max-[359px]:text-xs"><WhatsAppIcon className="size-[18px] shrink-0" /> WhatsApp</a>
       <button onClick={() => openQuote()} className="btn-primary !px-1 !py-2.5 max-[359px]:text-xs">Get quote</button>
     </div>
   )
@@ -252,7 +253,7 @@ function FloatingActions() {
       </AnimatePresence>
       <a href={site.whatsappHref} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp" className="group relative grid size-14 place-items-center rounded-full bg-[#25D366] text-white shadow-xl shadow-[#25D366]/40 transition hover:scale-110">
         <span className="absolute inset-0 animate-ping rounded-full bg-[#25D366] opacity-30" />
-        <MessageCircle className="relative size-6" />
+        <WhatsAppIcon className="relative size-7" />
         <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-ink px-3 py-1.5 text-xs font-medium opacity-0 transition group-hover:opacity-100">Chat on WhatsApp</span>
       </a>
     </div>

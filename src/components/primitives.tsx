@@ -7,17 +7,12 @@ import { ChevronRight, Star } from 'lucide-react'
 
 export function Logo({ light = false, sub = true }: { light?: boolean; sub?: boolean }) {
   return (
-    <Link href="/" className="group flex items-center gap-2.5" aria-label="Nirmal LifeCare — home">
-      <span className="relative grid size-10 place-items-center rounded-xl bg-brand shadow-lg shadow-brand/30 transition-transform duration-500 group-hover:rotate-[360deg]">
-        <svg viewBox="0 0 24 24" className="size-6" fill="white" aria-hidden="true">
-          <path d="M9.5 4h5v5.5H20v5h-5.5V20h-5v-5.5H4v-5h5.5z" />
-        </svg>
-        <span className="absolute -right-0.5 -top-0.5 size-3 rounded-full bg-amber ring-2 ring-white" />
+    <Link href="/" className="group block shrink-0 leading-none" aria-label="Nirmal Lifecare — home">
+      <span className="block whitespace-nowrap text-[1.35rem] font-extrabold tracking-tight sm:text-2xl">
+        <span className={light ? 'text-white' : 'text-ink'}>Nirmal</span>{' '}
+        <span className={`bg-clip-text text-transparent transition-[background-position] duration-700 [background-size:200%_auto] group-hover:[background-position:100%_0] ${light ? 'bg-gradient-to-r from-amber via-[#f7c46f] to-amber' : 'bg-gradient-to-r from-brand via-brand-400 to-amber'}`}>Lifecare</span>
       </span>
-      <span className="leading-tight">
-        <span className={`block text-lg font-bold ${light ? 'text-white' : 'text-ink'}`}>Nirmal LifeCare</span>
-        {sub && <span className={`block text-[11px] font-medium ${light ? 'text-white/60' : 'text-muted'}`}>Pharma trader & exporter</span>}
-      </span>
+      {sub && <span className={`mt-1 block text-[10px] font-semibold uppercase tracking-[0.2em] ${light ? 'text-white/50' : 'text-muted'}`}>Pharma trader & exporter</span>}
     </Link>
   )
 }
