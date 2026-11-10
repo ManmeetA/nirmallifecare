@@ -91,6 +91,12 @@
   background-size: 22px 22px;
 }
 
+/* Printing a page (e.g. the privacy policy) prints only the content. */
+@media print {
+  header, footer, .fixed { display: none !important; }
+  body { background: white; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

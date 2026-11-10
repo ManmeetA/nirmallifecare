@@ -7,6 +7,7 @@ import { Check, FileLock2, Loader2, X } from 'lucide-react'
 import { api } from '../lib/api'
 import { isValidEmail, isValidMobile } from '../lib/hooks'
 import { LICENCE_REQUEST_TAG } from '../lib/licence'
+import PrivacyNote from './PrivacyNote'
 
 /**
  * "Request licence copies" button + form. Full GST / drug-licence numbers are not
@@ -119,6 +120,7 @@ function Dialog({ onClose }: { onClose: () => void }) {
             <button type="submit" disabled={status === 'sending'} className="btn-primary w-full !py-3.5">
               {status === 'sending' ? <><Loader2 className="size-5 animate-spin" /> Sending…</> : 'Send request'}
             </button>
+            <PrivacyNote />
           </form>
         )}
       </motion.div>

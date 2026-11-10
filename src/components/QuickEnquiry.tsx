@@ -6,6 +6,7 @@ import { api } from '../lib/api'
 import { isValidEmail, isValidMobile } from '../lib/hooks'
 import { useUI } from '../context/ui'
 import type { Enquiry } from '../lib/types'
+import PrivacyNote from './PrivacyNote'
 
 /** Short requirement + mobile + email form used in the home "best bulk deals" band. */
 export default function QuickEnquiry({ source = 'home', dark = true }: { source?: Enquiry['source']; dark?: boolean }) {
@@ -65,6 +66,7 @@ export default function QuickEnquiry({ source = 'home', dark = true }: { source?
       <button type="submit" disabled={sending} className="btn-amber btn-shine w-full !py-3.5 text-base">
         {sending ? <Loader2 className="size-5 animate-spin" /> : <Send className="size-4" />} Send enquiry
       </button>
+      <PrivacyNote light={dark} />
     </form>
   )
 }

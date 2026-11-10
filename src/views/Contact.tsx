@@ -11,6 +11,7 @@ import WhatsAppIcon from '../components/WhatsAppIcon'
 import { Breadcrumbs, PageHero, Reveal } from '../components/primitives'
 import LicenceRequest from '../components/LicenceRequest'
 import Select from '../components/Select'
+import PrivacyNote from '../components/PrivacyNote'
 
 const BUYER_TYPES: BuyerType[] = ['Retail pharmacy', 'Hospital', 'Distributor', 'Wholesaler', 'Nursing home', 'Other']
 const COUNTRIES = ['India', 'Nepal', 'Bangladesh', 'Sri Lanka', 'UAE', 'Kenya', 'Nigeria', 'Other']
@@ -139,6 +140,7 @@ export default function Contact() {
                   <button type="submit" disabled={status === 'sending'} className="btn-primary btn-shine w-full !py-3.5 text-base">
                     {status === 'sending' ? <><Loader2 className="size-5 animate-spin" /> Sending…</> : 'Submit enquiry'}
                   </button>
+                  <PrivacyNote />
                 </motion.form>
               )}
             </AnimatePresence>

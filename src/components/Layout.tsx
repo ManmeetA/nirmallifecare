@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
-import { ArrowUp, Facebook, Linkedin, Mail, Menu, Phone, X } from 'lucide-react'
+import { ArrowUp, Mail, Menu, Phone, X } from 'lucide-react'
 import { site } from '../data/site'
 import { useScrolled } from '../lib/hooks'
 import { useUI } from '../context/ui'
@@ -130,6 +130,24 @@ function Header() {
   )
 }
 
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  )
+}
+
+function LinkedinIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect width="4" height="12" x="2" y="9" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  )
+}
+
 function Footer() {
   return (
     <footer className="relative overflow-hidden bg-ink text-white/75">
@@ -140,8 +158,8 @@ function Footer() {
           <p className="mt-4 max-w-xs text-sm leading-relaxed">{site.blurb}</p>
           <div className="mt-6 flex gap-3">
             {[
-              { href: site.socials.facebook, Icon: Facebook, label: 'Facebook' },
-              { href: site.socials.linkedin, Icon: Linkedin, label: 'LinkedIn' },
+              { href: site.socials.facebook, Icon: FacebookIcon, label: 'Facebook' },
+              { href: site.socials.linkedin, Icon: LinkedinIcon, label: 'LinkedIn' },
               { href: site.whatsappHref, Icon: WhatsAppIcon, label: 'WhatsApp' },
             ].map(({ href, Icon, label }) => (
               <a key={label} href={href} aria-label={label} target="_blank" rel="noreferrer" className="grid size-10 place-items-center rounded-xl border border-white/15 transition hover:-translate-y-1 hover:border-amber hover:text-amber">

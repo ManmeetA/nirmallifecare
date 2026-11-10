@@ -11,6 +11,7 @@ import { site } from '../data/site'
 import ProductArt from './ProductArt'
 import { formOf } from './ProductCard'
 import Select from './Select'
+import PrivacyNote from './PrivacyNote'
 
 const UNITS: Unit[] = ['Box', 'Strip', 'Vial', 'Bottle', 'Piece', 'Tube']
 const TITLES = ['Mr.', 'Ms.', 'Mrs.', 'Dr.'] as const
@@ -155,6 +156,7 @@ export default function QuoteModal({ request, onClose }: { request: QuoteRequest
               {status === 'sending' ? <><Loader2 className="size-5 animate-spin" /> Sending…</> : 'Send enquiry'}
             </button>
             <p className="text-center text-xs text-muted">We usually reply within {site.replyWithin}.</p>
+            <PrivacyNote className="text-center" />
           </form>
         )}
       </motion.div>
