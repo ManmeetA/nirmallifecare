@@ -7,7 +7,7 @@ import { SUPABASE_ANON_KEY, SUPABASE_URL, supabaseConfigured } from './lib/supab
  * visitors to /admin/login. The admin-role check (public.admin_users) happens
  * in app/admin/(panel)/layout.tsx and, for data, in the database's RLS policies.
  */
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   if (!supabaseConfigured) return NextResponse.next()
 
   let response = NextResponse.next({ request })
