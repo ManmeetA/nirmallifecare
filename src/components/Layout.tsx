@@ -12,6 +12,7 @@ import { useUI } from '../context/ui'
 import { Logo } from './primitives'
 import SearchBox from './SearchBox'
 import WhatsAppIcon from './WhatsAppIcon'
+import LicenceRequest from './LicenceRequest'
 
 const NAV = [
   { to: '/', label: 'Home' },
@@ -55,20 +56,20 @@ function Header() {
 
   return (
     <header className={`sticky top-0 z-40 transition-all duration-300 ${scrolled ? 'border-b border-line/70 bg-white/80 shadow-lg shadow-ink/5 backdrop-blur-xl' : 'border-b border-line bg-white'}`}>
-      <div className={`container-x flex items-center gap-6 transition-all duration-300 ${scrolled ? 'h-16' : 'h-20'}`}>
+      <div className={`container-x flex items-center gap-4 transition-all duration-300 xl:gap-6 ${scrolled ? 'h-16' : 'h-20'}`}>
         <Logo />
-        <nav className="hidden flex-1 items-center gap-1 lg:flex" aria-label="Main">
+        <nav className="hidden flex-1 items-center gap-0.5 lg:flex xl:gap-1" aria-label="Main">
           {NAV.map((n) => {
             const active = isActive(pathname, n.to)
             return (
-              <Link key={n.to} href={n.to} aria-current={active ? 'page' : undefined} className={`relative z-0 rounded-lg px-3.5 py-2 text-sm font-medium transition ${active ? 'text-brand' : 'text-ink hover:text-brand'}`}>
+              <Link key={n.to} href={n.to} aria-current={active ? 'page' : undefined} className={`relative z-0 whitespace-nowrap rounded-lg px-2.5 py-2 text-sm font-medium transition xl:px-3.5 ${active ? 'text-brand' : 'text-ink hover:text-brand'}`}>
                 {active && <motion.span layoutId="nav-pill" className="absolute inset-0 -z-10 rounded-lg bg-mist" transition={{ type: 'spring', stiffness: 400, damping: 32 }} />}
                 {n.label}
               </Link>
             )
           })}
         </nav>
-        <div className="ml-auto hidden w-56 xl:block">
+        <div className="ml-auto hidden w-48 xl:block 2xl:w-56">
           <SearchBox />
         </div>
         <button onClick={() => openQuote()} className="btn-primary btn-shine ml-auto hidden sm:inline-flex xl:ml-0">
@@ -178,7 +179,13 @@ function Footer() {
       </div>
       <div className="relative border-t border-white/10">
         <div className="container-x flex flex-col gap-3 py-5 text-xs sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Nirmal Lifecare. All rights reserved.</p>
+          <div className="space-y-1">
+            <p>© {new Date().getFullYear()} Nirmal Lifecare. All rights reserved.</p>
+            <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-white/45">
+              <span>GSTIN {site.gst} · {site.drugLicences.map((l) => `DL ${l.form}: ${l.number}`).join(' · ')}</span>
+              <LicenceRequest className="inline-flex items-center gap-1 font-medium text-amber/90 underline-offset-4 hover:underline [&>svg]:size-3.5" label="Request copies" />
+            </p>
+          </div>
           <div className="flex gap-5">
             <Link href="/privacy" className="underline-offset-4 hover:text-white hover:underline">Privacy policy</Link>
             <Link href="/terms" className="underline-offset-4 hover:text-white hover:underline">Terms of use</Link>

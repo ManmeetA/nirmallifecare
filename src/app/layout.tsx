@@ -6,8 +6,8 @@ import './globals.css'
 const poppins = Poppins({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700', '800'], variable: '--font-poppins', display: 'swap' })
 
 export const metadata: Metadata = {
-  title: { default: 'Nirmal Lifecare — Pharmaceutical Trader & Exporter', template: '%s · Nirmal Lifecare' },
-  description: 'Nirmal Lifecare — pharmaceutical trader & exporter. Tablets, capsules, injections and speciality medicines with bulk pricing across India and overseas.',
+  title: { default: 'Nirmal Lifecare — Licensed Pharmaceutical Wholesaler, Ghaziabad', template: '%s · Nirmal Lifecare' },
+  description: 'Nirmal Lifecare — licensed pharmaceutical wholesaler in Ghaziabad, Uttar Pradesh (Drug licence 20B & 21B, GST registered). Tablets, capsules, injections and speciality medicines at bulk rates for pharmacies, hospitals and distributors.',
   openGraph: { siteName: 'Nirmal Lifecare', type: 'website', locale: 'en_IN' },
 }
 

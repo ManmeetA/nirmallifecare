@@ -8,6 +8,7 @@ import { site } from '../data/site'
 import { useUI } from '../context/ui'
 import ProductArt from '../components/ProductArt'
 import { Breadcrumbs, PageHero, Reveal, SectionHeading, Tilt } from '../components/primitives'
+import LicenceRequest from '../components/LicenceRequest'
 
 const STEPS = [
   { t: 'Send enquiry', d: 'Share products, strength and quantity by form, call or WhatsApp.' },
@@ -54,7 +55,7 @@ export default function About() {
         <h1 className="mt-5 max-w-3xl break-words text-3xl font-extrabold min-[380px]:text-4xl leading-tight sm:text-6xl">
           Supplying quality medicines <span className="text-gradient">with care</span> since {site.since}.
         </h1>
-        <p className="mt-5 max-w-xl text-lg text-white/70">[One-sentence positioning statement — who Nirmal Lifecare serves and what it supplies.]</p>
+        <p className="mt-5 max-w-xl text-lg text-white/70">A licensed pharmaceutical wholesaler in Ghaziabad, supplying pharmacies, hospitals, clinics and distributors.</p>
       </PageHero>
 
       <section className="container-x grid items-center gap-12 py-12 lg:grid-cols-2">
@@ -76,9 +77,9 @@ export default function About() {
         </Reveal>
         <Reveal delay={0.1}>
           <p className="eyebrow">Our story</p>
-          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">From a local pharma trader to a supplier buyers rely on</h2>
-          <p className="mt-5 leading-relaxed text-muted">[Paragraph 1 — how and where the business started, and the founder’s background.]</p>
-          <p className="mt-4 leading-relaxed text-muted">[Paragraph 2 — what the company supplies today, which buyers it serves, and the markets it exports to.]</p>
+          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">A licensed wholesaler buyers can rely on</h2>
+          <p className="mt-5 leading-relaxed text-muted">Nirmal Lifecare was set up in {site.since} by {site.proprietor} at Suchitra Complex, Navyug Market, Ghaziabad. The business is GST-registered and recognised as a micro enterprise under the Government of India’s Udyam (MSME) scheme.</p>
+          <p className="mt-4 leading-relaxed text-muted">We hold Form 20B and 21B licences to sell and distribute drugs by wholesale, so we supply only to licensed pharmacies, hospitals, clinics, medical practitioners and distributors — with every sale under the supervision of a competent person, as the licences require.</p>
         </Reveal>
       </section>
 
@@ -105,11 +106,23 @@ export default function About() {
         <Reveal>
           <p className="eyebrow">Factsheet</p>
           <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Company at a glance</h2>
-          <p className="mt-4 text-muted">Registration and trade details for buyers completing vendor onboarding.</p>
+          <p className="mt-4 text-muted">Registration and licence details for buyers completing vendor onboarding. Numbers are partly hidden to prevent misuse — licensed buyers can request full copies.</p>
+          <LicenceRequest className="btn-primary mt-6 !py-2.5" />
         </Reveal>
         <Reveal delay={0.1}>
           <dl className="overflow-hidden rounded-2xl border border-line">
-            {[...site.facts, { label: 'GSTIN', value: site.gst }, { label: 'Contact person', value: `${site.contactPerson}, ${site.designation}` }].map((f, i) => (
+            {[
+              { label: 'Trade name', value: site.name },
+              { label: 'Proprietor', value: site.proprietor },
+              { label: 'Legal status', value: 'Proprietorship' },
+              { label: 'Nature of business', value: 'Wholesale of pharmaceutical and medical goods' },
+              { label: 'GSTIN', value: site.gst },
+              ...site.drugLicences.map((l) => ({ label: `Drug licence · Form ${l.form}`, value: `${l.number} — ${l.scope}` })),
+              { label: 'Licence validity', value: `Issued ${site.licenceIssued} · valid till ${site.licenceValidTill}` },
+              { label: 'MSME (Udyam)', value: `${site.udyam} · Micro enterprise` },
+              { label: 'Trade mark', value: `Application ${site.trademark.number} (Class ${site.trademark.class}) · ${site.trademark.status}` },
+              { label: 'Registered address', value: `${site.addressLine}, ${site.cityLine}` },
+            ].map((f, i) => (
               <div key={f.label} className={`grid text-sm transition hover:bg-mint/50 sm:grid-cols-[1fr_1.3fr] ${i % 2 ? 'bg-white' : 'bg-mist/60'}`}>
                 <dt className="px-4 pt-3 text-xs text-muted sm:px-5 sm:py-3.5 sm:text-sm">{f.label}</dt>
                 <dd className="break-words px-4 pb-3 pt-0.5 font-semibold sm:px-5 sm:py-3.5">{f.value}</dd>
@@ -129,15 +142,15 @@ export default function About() {
       <section className="container-x py-12">
         <Reveal>
           <div className="flex flex-col items-center gap-8 md:flex-row md:gap-12">
-            {/* Replace with director photo */}
+            {/* Replace with proprietor photo */}
             <div className="relative shrink-0">
               <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-brand to-amber opacity-30 blur-xl" />
-              <div className="relative grid size-40 place-items-center rounded-full bg-mint text-sm font-semibold text-brand ring-8 ring-white">[Director photo]</div>
+              <div className="relative grid size-40 place-items-center rounded-full bg-mint text-sm font-semibold text-brand ring-8 ring-white">[Proprietor photo]</div>
             </div>
             <figure className="text-center md:text-left">
               <Quote className="mx-auto size-10 text-amber md:mx-0" />
-              <blockquote className="mt-3 text-xl font-bold leading-snug sm:text-3xl">“{site.directorMessage}”</blockquote>
-              <figcaption className="mt-4 text-muted"><span className="font-semibold text-ink">{site.director}</span> · Director, Nirmal Lifecare</figcaption>
+              <blockquote className="mt-3 text-xl font-bold leading-snug sm:text-3xl">“{site.proprietorMessage}”</blockquote>
+              <figcaption className="mt-4 text-muted"><span className="font-semibold text-ink">{site.proprietor}</span> · Proprietor, Nirmal Lifecare</figcaption>
             </figure>
           </div>
         </Reveal>

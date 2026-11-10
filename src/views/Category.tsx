@@ -11,6 +11,7 @@ import type { Category as CategoryT, ProductQuery } from '../lib/types'
 import { useUI } from '../context/ui'
 import { ProductRow } from '../components/ProductCard'
 import { Breadcrumbs, PageHero, Skeleton } from '../components/primitives'
+import Select from '../components/Select'
 
 const THERAPY = ['Cardiac', 'Diabetic', 'Thyroid', 'Gastro', 'Anti-infective', 'Ophthalmic', 'Dermatology', 'Analgesic']
 const PACKAGING = ['Strip', 'Box', 'Bottle', 'Vial', 'Tube']
@@ -130,11 +131,17 @@ export default function Category({ search = false, initialCategory }: { search?:
             <button onClick={() => setDrawer(true)} className="btn-ghost !py-2 max-sm:order-last lg:hidden sm:ml-auto"><SlidersHorizontal className="size-4" /> Filters</button>
             <label className="flex items-center gap-2 text-sm text-muted max-sm:order-last max-sm:ml-auto lg:ml-auto">
               Sort by
-              <select className="field !w-auto !py-2" value={sort} onChange={(e) => update({ sort: e.target.value === 'relevance' ? null : e.target.value })}>
-                <option value="relevance">Relevance</option>
-                <option value="name-asc">Name A–Z</option>
-                <option value="name-desc">Name Z–A</option>
-              </select>
+              <Select
+                aria-label="Sort by"
+                className="!w-auto !py-2"
+                value={sort ?? 'relevance'}
+                onChange={(v) => update({ sort: v === 'relevance' ? null : v })}
+                options={[
+                  { value: 'relevance', label: 'Relevance' },
+                  { value: 'name-asc', label: 'Name A–Z' },
+                  { value: 'name-desc', label: 'Name Z–A' },
+                ]}
+              />
             </label>
           </div>
 

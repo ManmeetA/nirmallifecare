@@ -1,31 +1,46 @@
-// Company details. Values in [brackets] are placeholders from the mockup —
-// replace them with the client's real content (or serve them from the backend).
+// Company details, taken from Nirmal Lifecare's GST certificate (REG-06), drug licences
+// (Forms 20B / 21B), Udyam certificate and trade-mark application. Values still in
+// [brackets] were not in those documents — fill them in when the client confirms them.
 export const site = {
   name: 'Nirmal Lifecare',
-  tagline: 'Pharmaceutical trader & exporter',
-  blurb: 'Trader and exporter of pharmaceutical tablets, capsules, injections and speciality medicines.',
-  phone: '[+91 XXXXX XXXXX]',
-  phoneHref: 'tel:+910000000000',
-  whatsappHref: 'https://wa.me/910000000000',
-  email: '[sales@yourdomain.com]',
-  emailHref: 'mailto:sales@yourdomain.com',
-  gst: '[GST No.]',
-  iec: '[IEC]',
+  tagline: 'Licensed pharmaceutical wholesaler',
+  blurb: 'Licensed wholesale distributor of pharmaceutical tablets, capsules, injections and speciality medicines, based in Ghaziabad, Uttar Pradesh.',
+  phone: '+91 99712 22355',
+  phoneHref: 'tel:+919971222355',
+  whatsappHref: 'https://wa.me/919971222355',
+  email: 'nirmallifecare99@gmail.com',
+  emailHref: 'mailto:nirmallifecare99@gmail.com',
+
+  // Registrations and licences — masked on purpose. The full numbers are NOT stored in
+  // the site code (the GSTIN contains the proprietor's PAN); verified buyers get copies on
+  // request via the "Request licence copies" form, which lands in the admin Enquiries inbox.
+  gst: '09••••••••••1Z4',
+  drugLicences: [
+    { form: '20B', number: 'UP1420B•••593', scope: 'Drugs other than those in Schedules C, C(1) and X' },
+    { form: '21B', number: 'UP1421B•••569', scope: 'Drugs in Schedules C and C(1), excluding Schedule X' },
+  ],
+  licenceIssued: '28 Sep 2024',
+  licenceValidTill: '27 Sep 2029',
+  udyam: 'UDYAM-UP-29-•••••88',
+  trademark: { number: '6715198', status: 'Accepted & advertised', class: '35' },
+  since: '2024',
+
   hours: '[Mon–Sat, 10:00–19:00]',
   replyWithin: '[X] hours',
   dispatchDays: '[X] working days',
   paymentTerms: '[Terms]',
-  since: '[Year]',
-  contactPerson: '[Contact person]',
-  designation: '[Designation]',
-  addressLine: '[Shop / plot no.], [Street], [Area]',
-  cityLine: '[City] – [PIN], [State], India',
-  shortAddress: '[Area], [City] – [PIN], [State], India',
-  mapsHref: 'https://maps.google.com',
-  director: '[Director name]',
-  directorMessage: '[A short message from the director about the company’s commitment to buyers.]',
+  contactPerson: 'Shashi Singh',
+  designation: 'Proprietor',
+  addressLine: 'Shop No. 34, Ground Floor, Suchitra Complex, Dr Ambedkar Marg, Navyug Market',
+  cityLine: 'Ghaziabad, Uttar Pradesh 201001, India',
+  shortAddress: 'Suchitra Complex, Navyug Market, Ghaziabad, UP 201001',
+  mapsHref:
+    'https://www.google.com/maps/place/Suchita+Complex/@28.6637147,77.4342561,17z/data=!4m6!3m5!1s0x390cf1c8f342b2fb:0xc9458a7562f9afae!8m2!3d28.663554!4d77.4342531!16s%2Fg%2F11r8n9cxk',
+  mapsEmbed: 'https://www.google.com/maps?q=28.663554,77.4342531&z=17&output=embed',
+  proprietor: 'Shashi Singh',
+  proprietorMessage: '[A short message from the proprietor about the company’s commitment to buyers.]',
   intro:
-    '[Two or three sentences about the company: when it started, who it serves, and what it supplies. Example — “Based in [City], we source and supply branded and generic medicines to pharmacies, hospitals and distributors across India and export markets.”]',
+    'Nirmal Lifecare is a licensed pharmaceutical wholesaler based in Ghaziabad, Uttar Pradesh. Registered in 2024 and holding Form 20B and 21B wholesale drug licences, we supply tablets, capsules, injections and speciality medicines to pharmacies, hospitals, clinics and distributors.',
   // Developer credit in the footer.
   credit: {
     name: 'Manmeet',
@@ -36,19 +51,22 @@ export const site = {
     facebook: '#',
     linkedin: '#',
   },
+  // Shown on the home page "Welcome" panel (keep to a multiple of 3 for the grid).
   facts: [
-    { label: 'Nature of business', value: '[Trader · Exporter]' },
-    { label: 'Team size', value: '[No. of employees]' },
-    { label: 'Legal status', value: '[Proprietorship / Pvt Ltd]' },
-    { label: 'GST registration', value: '[Date]' },
-    { label: 'Annual turnover', value: '[Range]' },
-    { label: 'Import–Export Code', value: '[IEC]' },
+    { label: 'Nature of business', value: 'Pharmaceutical wholesale' },
+    { label: 'Legal status', value: 'Proprietorship' },
+    { label: 'Drug licence · Form 20B', value: 'Licensed ✓' },
+    { label: 'Drug licence · Form 21B', value: 'Licensed ✓' },
+    { label: 'GST', value: 'Registered ✓' },
+    { label: 'MSME (Udyam)', value: 'Registered ✓' },
   ],
-  // Headline numbers for the animated stats band — replace with real figures.
+  // Trust badges shown instead of full registration numbers.
+  credentials: ['Drug licence 20B & 21B', 'GST registered', 'MSME (Udyam) registered', 'Trade mark applied'],
+  // Credentials band on the home page. Numeric values animate as counters.
   stats: [
-    { value: 500, suffix: '+', label: 'Products in range' },
-    { value: 1200, suffix: '+', label: 'Buyers served' },
-    { value: 25, suffix: '+', label: 'Export destinations' },
-    { value: 24, suffix: ' h', label: 'Typical reply time' },
-  ],
+    { value: '2024', label: 'Registered in Ghaziabad' },
+    { value: '20B · 21B', label: 'Wholesale drug licences' },
+    { value: 'GST', label: 'Registered business' },
+    { value: 'MSME', label: 'Udyam-registered enterprise' },
+  ] as { value: string | number; suffix?: string; label: string }[],
 }

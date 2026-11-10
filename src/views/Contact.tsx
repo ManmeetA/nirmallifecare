@@ -2,13 +2,15 @@
 
 import { useState, type FormEvent } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Check, ChevronRight, Clock, Loader2, Mail, MapPin, Phone } from 'lucide-react'
+import { Check, ChevronRight, Clock, FileCheck2, Loader2, Mail, MapPin, Phone } from 'lucide-react'
 import { api } from '../lib/api'
 import { isValidEmail, isValidMobile } from '../lib/hooks'
 import type { BuyerType } from '../lib/types'
 import { site } from '../data/site'
 import WhatsAppIcon from '../components/WhatsAppIcon'
 import { Breadcrumbs, PageHero, Reveal } from '../components/primitives'
+import LicenceRequest from '../components/LicenceRequest'
+import Select from '../components/Select'
 
 const BUYER_TYPES: BuyerType[] = ['Retail pharmacy', 'Hospital', 'Distributor', 'Wholesaler', 'Nursing home', 'Other']
 const COUNTRIES = ['India', 'Nepal', 'Bangladesh', 'Sri Lanka', 'UAE', 'Kenya', 'Nigeria', 'Other']
@@ -46,7 +48,20 @@ export default function Contact() {
   const info = [
     { Icon: MapPin, t: 'Address', body: <>{site.addressLine}<br />{site.cityLine}</>, link: { href: site.mapsHref, label: 'Get directions' } },
     { Icon: Phone, t: 'Phone & WhatsApp', body: <><a href={site.phoneHref} className="hover:text-brand">{site.phone}</a><br /><span className="text-muted">{site.hours}</span></>, link: { href: site.whatsappHref, label: 'Chat on WhatsApp' } },
-    { Icon: Mail, t: 'Email', body: <a href={site.emailHref} className="hover:text-brand">{site.email}</a> },
+    { Icon: Mail, t: 'Email', body: <a href={site.emailHref} className="break-all hover:text-brand">{site.email}</a> },
+    {
+      Icon: FileCheck2,
+      t: 'Licences & registration',
+      body: (
+        <>
+          {site.credentials.map((c) => (
+            <span key={c} className="flex items-center gap-1.5"><Check className="size-3.5 shrink-0 text-brand" /> {c}</span>
+          ))}
+          <span className="mt-2 block text-xs text-muted">Full GST and licence copies are shared with verified buyers.</span>
+          <LicenceRequest className="btn-ghost mt-3 !px-3 !py-2 text-xs" />
+        </>
+      ),
+    },
   ]
 
   const err = (k: string) => errors[k] && <p className="mt-1 text-xs text-red-600">{errors[k]}</p>
@@ -60,13 +75,13 @@ export default function Contact() {
       </PageHero>
 
       <section className="container-x grid gap-8 py-10 lg:grid-cols-[1fr_1.5fr]">
-        <div className="space-y-5">
+        <div className="min-w-0 space-y-5">
           <Reveal>
             <div className="relative overflow-hidden rounded-3xl bg-ink p-7 text-white">
               <div className="absolute -right-10 -top-10 size-40 rounded-full bg-brand/50 blur-3xl" />
               <p className="eyebrow relative !text-amber">Contact person</p>
               <div className="relative mt-4 flex items-center gap-4">
-                <span className="grid size-14 place-items-center rounded-2xl bg-white/10 text-lg font-bold">NL</span>
+                <span className="grid size-14 place-items-center rounded-2xl bg-white/10 text-lg font-bold">{site.contactPerson.split(' ').map((w) => w[0]).join('')}</span>
                 <div>
                   <p className="text-xl font-bold">{site.contactPerson}</p>
                   <p className="text-sm text-white/60">{site.designation} · Nirmal Lifecare</p>
@@ -112,8 +127,8 @@ export default function Contact() {
                       {err('mobile')}
                     </div>
                     <div><label className="label" htmlFor="c-em">Email</label><input id="c-em" type="email" className="field" value={f.email} onChange={(e) => set('email', e.target.value)} autoComplete="email" />{err('email')}</div>
-                    <div><label className="label" htmlFor="c-bt">Buyer type</label><select id="c-bt" className="field" value={f.buyerType} onChange={(e) => set('buyerType', e.target.value as BuyerType)}>{BUYER_TYPES.map((b) => <option key={b}>{b}</option>)}</select></div>
-                    <div><label className="label" htmlFor="c-ct">Country</label><select id="c-ct" className="field" value={f.country} onChange={(e) => set('country', e.target.value)}>{COUNTRIES.map((c) => <option key={c}>{c}</option>)}</select></div>
+                    <div><label className="label" htmlFor="c-bt">Buyer type</label><Select id="c-bt" value={f.buyerType} onChange={(v) => set('buyerType', v)} options={BUYER_TYPES} /></div>
+                    <div><label className="label" htmlFor="c-ct">Country</label><Select id="c-ct" value={f.country} onChange={(v) => set('country', v)} options={COUNTRIES} /></div>
                   </div>
                   <div><label className="label" htmlFor="c-req">Describe your requirement</label><textarea id="c-req" rows={4} className="field resize-none" placeholder="Product names, strength and quantity" value={f.requirement} onChange={(e) => set('requirement', e.target.value)} />{err('requirement')}</div>
                   <label className="flex cursor-pointer items-center gap-3 text-sm">
@@ -135,7 +150,7 @@ export default function Contact() {
         <Reveal>
           {/* Replace the query with the business's exact address or a Google Maps embed URL */}
           <div className="overflow-hidden rounded-3xl border border-line shadow-xl shadow-brand/5">
-            <iframe title="Nirmal Lifecare location" src="https://www.google.com/maps?q=India&z=5&output=embed" className="h-96 w-full grayscale-[30%]" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+            <iframe title="Nirmal Lifecare location" src={site.mapsEmbed} className="h-96 w-full grayscale-[30%]" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
           </div>
         </Reveal>
       </section>

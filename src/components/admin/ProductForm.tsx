@@ -15,6 +15,7 @@ import { useUI } from '@/context/ui'
 import { revalidateCatalog } from '@/app/admin/actions'
 import { ProductCard } from '../ProductCard'
 import { Panel, Toggle } from './ui'
+import Select from '../Select'
 
 const UNITS: Unit[] = ['Box', 'Strip', 'Vial', 'Bottle', 'Piece', 'Tube']
 const PACKAGING: Product['packaging'][] = ['Strip', 'Box', 'Bottle', 'Vial', 'Tube']
@@ -168,10 +169,14 @@ export default function ProductForm({ product }: { product?: Product }) {
             </Field>
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Category" htmlFor="p-cat" error={errors.category}>
-                <select id="p-cat" className="field" value={f.category} onChange={(e) => set('category', e.target.value)}>
-                  {!cats.data && <option>Loading…</option>}
-                  {cats.data?.map((c) => <option key={c.slug} value={c.slug}>{c.name}</option>)}
-                </select>
+                <Select
+                  id="p-cat"
+                  value={f.category}
+                  onChange={(v) => set('category', v)}
+                  placeholder={cats.data ? 'Choose a category' : 'Loading…'}
+                  disabled={!cats.data}
+                  options={(cats.data ?? []).map((c) => ({ value: c.slug, label: c.name }))}
+                />
               </Field>
               <Field label="Composition / molecule" htmlFor="p-comp" error={errors.composition}>
                 <input id="p-comp" className="field" placeholder="e.g. Atorvastatin calcium" value={f.composition} onChange={(e) => set('composition', e.target.value)} />
@@ -191,14 +196,10 @@ export default function ProductForm({ product }: { product?: Product }) {
                 <input id="p-pack" className="field" placeholder="e.g. 10 × 10 tablets" value={f.pack} onChange={(e) => set('pack', e.target.value)} />
               </Field>
               <Field label="Selling unit" htmlFor="p-unit" hint="Price is shown per this unit.">
-                <select id="p-unit" className="field" value={f.unit} onChange={(e) => set('unit', e.target.value as Unit)}>
-                  {UNITS.map((u) => <option key={u}>{u}</option>)}
-                </select>
+                <Select id="p-unit" value={f.unit} onChange={(v) => set('unit', v)} options={UNITS} />
               </Field>
               <Field label="Packaging" htmlFor="p-pkg" hint="Used by the Packaging filter.">
-                <select id="p-pkg" className="field" value={f.packaging} onChange={(e) => set('packaging', e.target.value as Product['packaging'])}>
-                  {PACKAGING.map((u) => <option key={u}>{u}</option>)}
-                </select>
+                <Select id="p-pkg" value={f.packaging} onChange={(v) => set('packaging', v)} options={PACKAGING} />
               </Field>
             </div>
             <div>

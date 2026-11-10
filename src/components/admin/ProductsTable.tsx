@@ -12,6 +12,7 @@ import { useUI } from '@/context/ui'
 import { revalidateCatalog } from '@/app/admin/actions'
 import { ProductMedia } from '../ProductCard'
 import { Badge, ConfirmDialog, EmptyState, PageHeader, Panel, Toggle, timeAgo } from './ui'
+import Select from '../Select'
 
 type Status = 'all' | 'active' | 'hidden' | 'featured'
 
@@ -91,10 +92,15 @@ export default function ProductsTable() {
             <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted" />
             <input className="field !py-2.5 !pl-10" placeholder="Search name, molecule or slug" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Search products" />
           </div>
-          <select className="field !w-auto !py-2.5" value={cat} onChange={(e) => setCat(e.target.value)} aria-label="Filter by category">
-            <option value="">All categories</option>
-            {cats.data?.map((c) => <option key={c.slug} value={c.slug}>{c.name}</option>)}
-          </select>
+          <div className="w-full sm:w-auto">
+            <Select
+              aria-label="Filter by category"
+              className="!py-2.5 sm:min-w-48"
+              value={cat}
+              onChange={setCat}
+              options={[{ value: '', label: 'All categories' }, ...(cats.data ?? []).map((c) => ({ value: c.slug, label: c.name }))]}
+            />
+          </div>
           <div className="flex max-w-full overflow-x-auto rounded-xl border border-line p-1 [scrollbar-width:none]">
             {(['all', 'active', 'hidden', 'featured'] as Status[]).map((s) => (
               <button key={s} onClick={() => setStatus(s)} className={`relative shrink-0 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-semibold capitalize transition ${status === s ? 'text-white' : 'text-muted hover:text-ink'}`}>

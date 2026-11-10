@@ -12,6 +12,7 @@ import { useUI } from '../context/ui'
 import { ProductCard, ProductMedia, formLabel } from '../components/ProductCard'
 import WhatsAppIcon from '../components/WhatsAppIcon'
 import { Breadcrumbs, Reveal, Skeleton, Tilt } from '../components/primitives'
+import Select from '../components/Select'
 
 const UNITS: Unit[] = ['Box', 'Strip', 'Vial', 'Bottle', 'Piece', 'Tube']
 const TABS = ['Description', 'Specifications', 'Shipping & ordering'] as const
@@ -108,9 +109,7 @@ export default function ProductDetail({ initialProduct, initialCategory }: { ini
                 </div>
                 <div>
                   <label className="label" htmlFor="pd-unit">Unit</label>
-                  <select id="pd-unit" className="field !py-2.5" value={u} onChange={(e) => setUnit(e.target.value as Unit)}>
-                    {UNITS.map((x) => <option key={x}>{x}</option>)}
-                  </select>
+                  <Select id="pd-unit" className="!py-2.5" value={u} onChange={setUnit} options={UNITS} />
                 </div>
                 <div className="col-span-2 flex items-end sm:col-span-1">
                   <button onClick={() => openQuote({ product: p, quantity: qty, unit: u })} className="btn-primary btn-shine w-full !py-3.5 text-base">Get best quote</button>

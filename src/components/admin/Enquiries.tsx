@@ -8,6 +8,7 @@ import { adminApi } from '@/lib/admin-api'
 import { useAsync } from '@/lib/hooks'
 import type { EnquiryRecord, EnquiryStatus } from '@/lib/types'
 import { useUI } from '@/context/ui'
+import { LICENCE_REQUEST_TAG, isLicenceRequest } from '@/lib/licence'
 import WhatsAppIcon from '../WhatsAppIcon'
 import { Badge, ConfirmDialog, EmptyState, PageHeader, Panel, timeAgo } from './ui'
 
@@ -109,8 +110,9 @@ function Inner() {
                         <span className="font-semibold">{[e.title, e.name].filter(Boolean).join(' ') || e.mobile}</span>
                         {e.company && <span className="text-sm text-muted">· {e.company}</span>}
                         <Badge tone={TONE[e.status]}>{e.status}</Badge>
+                        {isLicenceRequest(e.requirement) && <Badge tone="brand">Licence request</Badge>}
                       </span>
-                      <span className={`mt-0.5 block text-sm text-ink/80 ${isOpen ? '' : 'truncate'}`}>{e.requirement}</span>
+                      <span className={`mt-0.5 block text-sm text-ink/80 ${isOpen ? '' : 'truncate'}`}>{e.requirement.replace(LICENCE_REQUEST_TAG, '').trim()}</span>
                       <span className="mt-1 flex flex-wrap gap-x-3 text-xs text-muted">
                         <span>{SOURCE[e.source]}</span>
                         {e.quantity && <span>{e.quantity} {e.unit}</span>}

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform, type MotionValue } from 'framer-motion'
-import { ArrowRight, BadgeCheck, ChevronRight, Clock, FileCheck2, Headphones, IndianRupee, PackageCheck, Sparkles, Truck } from 'lucide-react'
+import { ArrowRight, BadgeCheck, ChevronRight, Clock, FileCheck2, Headphones, IndianRupee, PackageCheck, Sparkles } from 'lucide-react'
 import { api } from '../lib/api'
 import { useAsync } from '../lib/hooks'
 import { site } from '../data/site'
@@ -44,7 +44,7 @@ function Hero() {
         <div>
           <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-brand/20 bg-white/70 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-brand backdrop-blur sm:px-3.5 sm:text-xs sm:tracking-[0.16em]">
             <span className="relative flex size-2"><span className="absolute inset-0 animate-ping rounded-full bg-brand/60" /><span className="relative size-2 rounded-full bg-brand" /></span>
-            Pharmaceutical trader & exporter
+            Licensed pharmaceutical wholesaler
           </motion.span>
           <h1 className="mt-6 text-4xl font-extrabold leading-[1.08] sm:text-5xl xl:text-[3.6rem]">
             {HEADLINE.map((w, i) => (
@@ -60,7 +60,7 @@ function Hero() {
             ))}
           </h1>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }} className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-            Tablets, capsules, injections and speciality medicines from licensed manufacturers — with bulk pricing and dispatch across India and overseas.
+            Tablets, capsules, injections and speciality medicines from licensed manufacturers — supplied at bulk rates from Ghaziabad, under Form 20B and 21B wholesale drug licences.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.95 }} className="mt-8 max-w-xl">
             <SearchBox size="lg" placeholder="Search by brand, molecule or category" />
@@ -116,10 +116,10 @@ function HeroVisual({ far, near }: { far: MV; near: MV }) {
 
       <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.1 }} className="absolute -bottom-4 left-0 sm:left-[-6%]">
         <div className="glass flex items-center gap-3 rounded-2xl p-3 pr-5 shadow-2xl shadow-ink/10">
-          <span className="grid size-11 place-items-center rounded-xl bg-brand text-white"><Truck className="size-5" /></span>
+          <span className="grid size-11 place-items-center rounded-xl bg-brand text-white"><FileCheck2 className="size-5" /></span>
           <span>
-            <span className="block text-sm font-bold">Pan-India & export dispatch</span>
-            <span className="block text-xs text-muted">Reply to enquiries within {site.replyWithin}</span>
+            <span className="block text-sm font-bold">Licensed wholesale supply</span>
+            <span className="block text-xs text-muted">Drug licence 20B & 21B · GST registered</span>
           </span>
         </div>
       </motion.div>
@@ -133,7 +133,7 @@ function HeroVisual({ far, near }: { far: MV; near: MV }) {
   )
 }
 
-const TRUST = ['Licensed manufacturers', 'Batch & expiry on every invoice', 'Slab pricing for bulk', 'Pan-India dispatch', 'Export documentation', 'GST invoicing', 'Cold-chain on request', 'One named contact']
+const TRUST = ['Drug licence 20B & 21B', 'GST registered', 'MSME (Udyam) registered', 'Sourced from licensed manufacturers', 'Batch & expiry on every invoice', 'Slab pricing for bulk', 'GST invoicing', 'One named contact']
 
 function TrustMarquee() {
   return (
@@ -231,7 +231,7 @@ function Stats() {
         <div className="grid grid-cols-2 overflow-hidden rounded-3xl bg-gradient-to-r from-brand to-brand-400 text-white shadow-2xl shadow-brand/30 lg:grid-cols-4">
           {site.stats.map((s, i) => (
             <div key={s.label} className={`relative p-6 text-center sm:p-8 ${i > 0 ? 'lg:border-l' : ''} ${i % 2 ? 'border-l' : ''} ${i > 1 ? 'border-t lg:border-t-0' : ''} border-white/15`}>
-              <p className="text-3xl font-extrabold sm:text-4xl"><Counter to={s.value} suffix={s.suffix} /></p>
+              <p className="text-2xl font-extrabold sm:text-4xl">{typeof s.value === 'number' ? <Counter to={s.value} suffix={s.suffix} /> : s.value}</p>
               <p className="mt-1 text-sm text-white/80">{s.label}</p>
             </div>
           ))}
@@ -271,7 +271,7 @@ function Welcome() {
 const WHY = [
   { Icon: FileCheck2, title: 'Licensed sourcing', body: 'Stock from licensed manufacturers, with batch number and expiry shared on every invoice.' },
   { Icon: IndianRupee, title: 'Clear bulk pricing', body: 'Per-strip and per-box rates up front, with slab pricing for larger quantities.' },
-  { Icon: PackageCheck, title: 'Reliable dispatch', body: 'Packed to protect strips and vials, shipped with tracking across India and to export markets.' },
+  { Icon: PackageCheck, title: 'Reliable dispatch', body: 'Packed to protect strips and vials, dispatched promptly with batch and expiry details on the invoice.' },
   { Icon: Headphones, title: 'One point of contact', body: 'A named person handles your enquiry from quote to delivery, on call, email or WhatsApp.' },
 ]
 

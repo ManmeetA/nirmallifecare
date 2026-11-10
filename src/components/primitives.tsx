@@ -1,18 +1,26 @@
 'use client'
 
 import { useEffect, useRef, useState, type ReactNode } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { animate, motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { ChevronRight, Star } from 'lucide-react'
 
 export function Logo({ light = false, sub = true }: { light?: boolean; sub?: boolean }) {
   return (
-    <Link href="/" className="group block shrink-0 leading-none" aria-label="Nirmal Lifecare — home">
-      <span className="block whitespace-nowrap text-[1.35rem] font-extrabold tracking-tight sm:text-2xl">
-        <span className={light ? 'text-white' : 'text-ink'}>Nirmal</span>{' '}
-        <span className={`bg-clip-text text-transparent transition-[background-position] duration-700 [background-size:200%_auto] group-hover:[background-position:100%_0] ${light ? 'bg-gradient-to-r from-amber via-[#f7c46f] to-amber' : 'bg-gradient-to-r from-brand via-brand-400 to-amber'}`}>Lifecare</span>
+    <Link href="/" className="group flex shrink-0 items-center gap-2.5 leading-none" aria-label="Nirmal Lifecare — home">
+      {/* "NRL" device from the trade-mark application (No. 6715198) */}
+      <span className={`grid shrink-0 place-items-center transition-transform duration-500 group-hover:scale-105 ${light ? 'rounded-xl bg-white px-1.5 py-1' : ''}`}>
+        <Image src="/brand/nrl-mark.png" alt="" width={211} height={104} priority className="h-8 w-auto sm:h-9" />
       </span>
-      {sub && <span className={`mt-1 block text-[10px] font-semibold uppercase tracking-[0.2em] ${light ? 'text-white/50' : 'text-muted'}`}>Pharma trader & exporter</span>}
+      <span>
+        <span className="block whitespace-nowrap text-[1.2rem] font-extrabold tracking-tight sm:text-[1.4rem]">
+          <span className={light ? 'text-white' : 'text-ink'}>Nirmal</span>{' '}
+          <span className={`bg-clip-text text-transparent transition-[background-position] duration-700 [background-size:200%_auto] group-hover:[background-position:100%_0] ${light ? 'bg-gradient-to-r from-amber via-[#f7c46f] to-amber' : 'bg-gradient-to-r from-brand via-brand-400 to-amber'}`}>Lifecare</span>
+          <sup className={`ml-0.5 text-[9px] font-semibold ${light ? 'text-white/50' : 'text-muted'}`}>™</sup>
+        </span>
+        {sub && <span className={`mt-1 block text-[9px] font-semibold uppercase tracking-[0.12em] sm:text-[10px] ${light ? 'text-white/50' : 'text-muted'}`}>Licensed pharma wholesaler</span>}
+      </span>
     </Link>
   )
 }

@@ -10,6 +10,7 @@ import { formatPrice, isValidEmail, isValidMobile } from '../lib/hooks'
 import { site } from '../data/site'
 import ProductArt from './ProductArt'
 import { formOf } from './ProductCard'
+import Select from './Select'
 
 const UNITS: Unit[] = ['Box', 'Strip', 'Vial', 'Bottle', 'Piece', 'Tube']
 const TITLES = ['Mr.', 'Ms.', 'Mrs.', 'Dr.'] as const
@@ -115,9 +116,7 @@ export default function QuoteModal({ request, onClose }: { request: QuoteRequest
               </div>
               <div>
                 <label className="label" htmlFor="q-unit">Unit</label>
-                <select id="q-unit" className="field" value={unit} onChange={(e) => setUnit(e.target.value as Unit)}>
-                  {UNITS.map((u) => <option key={u}>{u}</option>)}
-                </select>
+                <Select id="q-unit" value={unit} onChange={setUnit} options={UNITS} />
               </div>
             </div>
             <fieldset>
