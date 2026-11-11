@@ -57,7 +57,7 @@ export const privacy: LegalDoc = {
       title: 'Who we are',
       body: (
         <p>
-          This website is operated by <strong>{site.name}</strong>, a sole proprietorship of {site.proprietor}, licensed pharmaceutical wholesaler at {site.addressLine}, {site.cityLine}.
+          This website is operated by <strong>{site.name}</strong>, a sole proprietorship of {site.proprietor}, licensed pharmaceutical wholesaler and distributor at {site.addressLine}, {site.cityLine}.
           For personal data collected through this website, {site.name} is the <em>Data Fiduciary</em> under the Digital Personal Data Protection Act, 2023.
         </p>
       ),
@@ -230,7 +230,7 @@ export const terms: LegalDoc = {
       title: 'About us',
       body: (
         <p>
-          This website is operated by <strong>{site.name}</strong>, a sole proprietorship of {site.proprietor}, {site.addressLine}, {site.cityLine}. We are a pharmaceutical wholesaler licensed under the Drugs and Cosmetics Act, 1940 (wholesale drug licences in Forms 20B and 21B) and registered under GST.
+          This website is operated by <strong>{site.name}</strong>, a sole proprietorship of {site.proprietor}, {site.addressLine}, {site.cityLine}. We are a pharmaceutical wholesaler and distributor licensed under the Drugs and Cosmetics Act, 1940 (wholesale drug licences in Forms 20B and 21B) and registered under GST.
         </p>
       ),
     },

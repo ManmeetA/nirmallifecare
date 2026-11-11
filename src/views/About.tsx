@@ -54,7 +54,7 @@ export default function About() {
         <h1 className="mt-5 max-w-3xl break-words text-3xl font-extrabold min-[380px]:text-4xl leading-tight sm:text-6xl">
           Supplying quality medicines <span className="text-gradient">with care</span> since {site.since}.
         </h1>
-        <p className="mt-5 max-w-xl text-lg text-white/70">A licensed pharmaceutical wholesaler in Ghaziabad, supplying pharmacies, hospitals, clinics and distributors.</p>
+        <p className="mt-5 max-w-xl text-lg text-white/70">A licensed pharmaceutical wholesaler and distributor in Ghaziabad, supplying pharmacies, hospitals, clinics and distributors.</p>
       </PageHero>
 
       <section className="container-x grid items-center gap-12 py-12 lg:grid-cols-2">
@@ -76,8 +76,8 @@ export default function About() {
         </Reveal>
         <Reveal delay={0.1}>
           <p className="eyebrow">Our story</p>
-          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">A licensed wholesaler buyers can rely on</h2>
-          <p className="mt-5 leading-relaxed text-muted">Nirmal Lifecare was set up in {site.since} by {site.proprietor} at Suchitra Complex, Navyug Market, Ghaziabad. The business is GST-registered and recognised as a micro enterprise under the Government of India’s Udyam (MSME) scheme.</p>
+          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">A licensed wholesaler &amp; distributor buyers can rely on</h2>
+          <p className="mt-5 leading-relaxed text-muted">Nirmal Lifecare was set up in {site.since} by {site.proprietor} at Suchitra Complex, Dr Ambedkar Marg, Ghaziabad. The business is GST-registered and recognised as a micro enterprise under the Government of India’s Udyam (MSME) scheme.</p>
           <p className="mt-4 leading-relaxed text-muted">We hold Form 20B and 21B licences to sell and distribute drugs by wholesale, so we supply only to licensed pharmacies, hospitals, clinics, medical practitioners and distributors — with every sale under the supervision of a competent person, as the licences require.</p>
         </Reveal>
       </section>
@@ -113,7 +113,7 @@ export default function About() {
               { label: 'Trade name', value: site.name },
               { label: 'Proprietor', value: site.proprietor },
               { label: 'Legal status', value: 'Proprietorship' },
-              { label: 'Nature of business', value: 'Wholesale of pharmaceutical and medical goods' },
+              { label: 'Nature of business', value: 'Wholesale and distribution of pharmaceutical and medical goods' },
               { label: 'GSTIN', value: site.gst },
               ...site.drugLicences.map((l) => ({ label: `Drug licence · Form ${l.form}`, value: `${l.number} — ${l.scope}` })),
               { label: 'Licence validity', value: `Issued ${site.licenceIssued} · valid till ${site.licenceValidTill}` },

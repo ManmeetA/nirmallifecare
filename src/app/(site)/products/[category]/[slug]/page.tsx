@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   const path = `/products/${category}/${slug}`
   return {
     title: `${p.name} — Wholesale Supplier in Ghaziabad`,
-    description: `Buy ${p.name} (${p.composition}, ${p.strength}, ${p.pack}) in bulk from Nirmal Lifecare, a licensed pharmaceutical wholesaler in Ghaziabad. Send an enquiry for the best wholesale price.`,
+    description: `Buy ${p.name} (${p.composition}, ${p.strength}, ${p.pack}) in bulk from Nirmal Lifecare, a licensed pharmaceutical wholesaler and distributor in Ghaziabad. Send an enquiry for the best wholesale price.`,
     alternates: { canonical: path },
     openGraph: pageOpenGraph(path, p.images?.[0]),
   }

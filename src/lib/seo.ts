@@ -57,7 +57,7 @@ export function organizationJsonLd() {
       { '@type': 'AdministrativeArea', name: 'Delhi NCR' },
       { '@type': 'State', name: 'Uttar Pradesh' },
     ],
-    knowsAbout: ['Pharmaceutical wholesale', 'Tablets', 'Capsules', 'Injections', 'Syrups', 'Eye and ear drops', 'Cardiac and diabetic medicines'],
+    knowsAbout: ['Pharmaceutical wholesale', 'Pharmaceutical distribution', 'Tablets', 'Capsules', 'Injections', 'Syrups', 'Eye and ear drops', 'Cardiac and diabetic medicines'],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',

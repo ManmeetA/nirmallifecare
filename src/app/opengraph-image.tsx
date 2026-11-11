@@ -3,7 +3,7 @@ import path from 'node:path'
 import { ImageResponse } from 'next/og'
 
 // Default share image (WhatsApp, LinkedIn, Facebook, X) for every page.
-export const alt = 'Nirmal Lifecare — Licensed Pharmaceutical Wholesaler, Ghaziabad'
+export const alt = 'Nirmal Lifecare — Licensed Pharmaceutical Wholesaler & Distributor, Ghaziabad'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -36,15 +36,15 @@ export default async function OpenGraphImage() {
           </div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ fontSize: 66, fontWeight: 800, lineHeight: 1.1 }}>Licensed Pharmaceutical Wholesaler</div>
+          <div style={{ fontSize: 62, fontWeight: 800, lineHeight: 1.1 }}>Licensed Pharmaceutical Wholesaler &amp; Distributor</div>
           <div style={{ fontSize: 34, marginTop: 18, color: 'rgba(255,255,255,0.8)' }}>
             Tablets · Capsules · Injections · Speciality medicines at bulk rates
           </div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 28, fontSize: 26, color: 'rgba(255,255,255,0.75)' }}>
-          <span>Navyug Market, Ghaziabad, Uttar Pradesh</span>
+          <span style={{ whiteSpace: 'nowrap' }}>Dr Ambedkar Marg, Ghaziabad</span>
           <span style={{ width: 8, height: 8, borderRadius: 4, background: 'rgba(255,255,255,0.4)' }} />
-          <span style={{ color: '#f2a93b' }}>Drug licence 20B &amp; 21B · GST registered</span>
+          <span style={{ color: '#f2a93b', whiteSpace: 'nowrap' }}>Drug licence 20B &amp; 21B · GST registered</span>
         </div>
       </div>
     ),

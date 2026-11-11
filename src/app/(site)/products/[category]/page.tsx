@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   if (!c) return { title: 'Products' }
   const path = `/products/${c.slug}`
   return {
-    title: `${c.name} Wholesaler in Ghaziabad`,
-    description: `${c.description} Bulk supply of pharmaceutical ${c.name.toLowerCase()} from Nirmal Lifecare, a licensed wholesaler in Navyug Market, Ghaziabad. Enquire for rates.`,
+    title: `${c.name} Wholesaler & Distributor, Ghaziabad`,
+    description: `${c.description} Bulk supply of pharmaceutical ${c.name.toLowerCase()} from Nirmal Lifecare, a licensed wholesaler and distributor in Ghaziabad, Uttar Pradesh. Enquire for rates.`,
     alternates: { canonical: path },
     openGraph: pageOpenGraph(path),
   }

@@ -19,7 +19,7 @@ export function Logo({ light = false, sub = true }: { light?: boolean; sub?: boo
           <span className={`bg-clip-text text-transparent transition-[background-position] duration-700 [background-size:200%_auto] group-hover:[background-position:100%_0] ${light ? 'bg-gradient-to-r from-amber via-[#f7c46f] to-amber' : 'bg-gradient-to-r from-brand via-brand-400 to-amber'}`}>Lifecare</span>
           <sup className={`ml-0.5 text-[9px] font-semibold ${light ? 'text-white/50' : 'text-muted'}`}>™</sup>
         </span>
-        {sub && <span className={`mt-1 block text-[9px] font-semibold uppercase tracking-[0.12em] sm:text-[10px] ${light ? 'text-white/50' : 'text-muted'}`}>Licensed pharma wholesaler</span>}
+        {sub && <span className={`mt-1 block text-[9px] max-[359px]:hidden font-semibold uppercase tracking-[0.12em] sm:text-[10px] ${light ? 'text-white/50' : 'text-muted'}`}>Pharma wholesaler & distributor</span>}
       </span>
     </Link>
   )

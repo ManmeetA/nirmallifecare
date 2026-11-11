@@ -9,11 +9,11 @@ const poppins = Poppins({ subsets: ['latin'], weight: ['300', '400', '500', '600
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Pharmaceutical Wholesaler in Ghaziabad | Nirmal Lifecare',
+    default: 'Pharma Wholesaler & Distributor in Ghaziabad | Nirmal Lifecare',
     template: '%s | Nirmal Lifecare',
   },
   description:
-    'Nirmal Lifecare is a licensed pharmaceutical wholesaler in Navyug Market, Ghaziabad (Drug licence 20B & 21B, GST registered). Tablets, capsules, injections and speciality medicines at bulk rates for pharmacies, hospitals and distributors.',
+    'Nirmal Lifecare is a licensed pharmaceutical wholesaler and distributor on Dr Ambedkar Marg, Ghaziabad (Drug licence 20B & 21B, GST registered). Tablets, capsules, injections and speciality medicines at bulk rates for pharmacies, hospitals and distributors.',
   applicationName: 'Nirmal Lifecare',
   openGraph: { siteName: 'Nirmal Lifecare', type: 'website', locale: 'en_IN' },
   twitter: { card: 'summary_large_image' },

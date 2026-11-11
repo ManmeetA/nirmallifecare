@@ -44,7 +44,7 @@ function Hero() {
         <div>
           <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-brand/20 bg-white/70 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-brand backdrop-blur sm:px-3.5 sm:text-xs sm:tracking-[0.16em]">
             <span className="relative flex size-2"><span className="absolute inset-0 animate-ping rounded-full bg-brand/60" /><span className="relative size-2 rounded-full bg-brand" /></span>
-            Licensed pharmaceutical wholesaler
+            Pharma wholesaler & distributor
           </motion.span>
           <h1 className="mt-6 text-4xl font-extrabold leading-[1.08] sm:text-5xl xl:text-[3.6rem]">
             {HEADLINE.map((w, i) => (

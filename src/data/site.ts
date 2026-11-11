@@ -3,7 +3,7 @@
 // [brackets] were not in those documents — fill them in when the client confirms them.
 export const site = {
   name: 'Nirmal Lifecare',
-  tagline: 'Licensed pharmaceutical wholesaler',
+  tagline: 'Licensed pharmaceutical wholesaler & distributor',
   blurb: 'Licensed wholesale distributor of pharmaceutical tablets, capsules, injections and speciality medicines, based in Ghaziabad, Uttar Pradesh.',
   phone: '+91 99712 22355',
   phoneHref: 'tel:+919971222355',
@@ -30,16 +30,17 @@ export const site = {
   paymentTerms: '[Terms]',
   contactPerson: 'Shashi Singh',
   designation: 'Proprietor',
-  addressLine: 'Shop No. 34, Ground Floor, Suchitra Complex, Dr Ambedkar Marg, Navyug Market',
+  // Exactly as on the GST registration certificate (Form REG-06, principal place of business).
+  addressLine: 'Shop No. 34, Ground Floor, Suchitra Complex, Dr Ambedkar Marg',
   cityLine: 'Ghaziabad, Uttar Pradesh 201001, India',
-  shortAddress: 'Suchitra Complex, Navyug Market, Ghaziabad, UP 201001',
+  shortAddress: 'Suchitra Complex, Dr Ambedkar Marg, Ghaziabad, UP 201001',
   mapsHref:
     'https://www.google.com/maps/place/Suchita+Complex/@28.6637147,77.4342561,17z/data=!4m6!3m5!1s0x390cf1c8f342b2fb:0xc9458a7562f9afae!8m2!3d28.663554!4d77.4342531!16s%2Fg%2F11r8n9cxk',
   mapsEmbed: 'https://www.google.com/maps?q=28.663554,77.4342531&z=17&output=embed',
   proprietor: 'Shashi Singh',
   proprietorMessage: '[A short message from the proprietor about the company’s commitment to buyers.]',
   intro:
-    'Nirmal Lifecare is a licensed pharmaceutical wholesaler based in Ghaziabad, Uttar Pradesh. Registered in 2024 and holding Form 20B and 21B wholesale drug licences, we supply tablets, capsules, injections and speciality medicines to pharmacies, hospitals, clinics and distributors.',
+    'Nirmal Lifecare is a licensed pharmaceutical wholesaler and distributor based in Ghaziabad, Uttar Pradesh. Registered in 2024 and holding Form 20B and 21B wholesale drug licences, we supply tablets, capsules, injections and speciality medicines to pharmacies, hospitals, clinics and distributors.',
   // Developer credit in the footer.
   credit: {
     name: 'Manmeet',
@@ -52,7 +53,7 @@ export const site = {
   },
   // Shown on the home page "Welcome" panel (keep to a multiple of 3 for the grid).
   facts: [
-    { label: 'Nature of business', value: 'Pharmaceutical wholesale' },
+    { label: 'Nature of business', value: 'Pharma wholesale & distribution' },
     { label: 'Legal status', value: 'Proprietorship' },
     { label: 'Drug licence · Form 20B', value: 'Licensed ✓' },
     { label: 'Drug licence · Form 21B', value: 'Licensed ✓' },
