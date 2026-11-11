@@ -9,7 +9,6 @@ import type { BuyerType } from '../lib/types'
 import { site } from '../data/site'
 import WhatsAppIcon from '../components/WhatsAppIcon'
 import { Breadcrumbs, PageHero, Reveal } from '../components/primitives'
-import LicenceRequest from '../components/LicenceRequest'
 import Select from '../components/Select'
 import PrivacyNote from '../components/PrivacyNote'
 
@@ -58,8 +57,6 @@ export default function Contact() {
           {site.credentials.map((c) => (
             <span key={c} className="flex items-center gap-1.5"><Check className="size-3.5 shrink-0 text-brand" /> {c}</span>
           ))}
-          <span className="mt-2 block text-xs text-muted">Full GST and licence copies are shared with verified buyers.</span>
-          <LicenceRequest className="btn-ghost mt-3 !px-3 !py-2 text-xs" />
         </>
       ),
     },

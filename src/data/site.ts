@@ -12,8 +12,7 @@ export const site = {
   emailHref: 'mailto:nirmallifecare99@gmail.com',
 
   // Registrations and licences — masked on purpose. The full numbers are NOT stored in
-  // the site code (the GSTIN contains the proprietor's PAN); verified buyers get copies on
-  // request via the "Request licence copies" form, which lands in the admin Enquiries inbox.
+  // the site code (the GSTIN contains the proprietor's PAN).
   gst: '09••••••••••1Z4',
   drugLicences: [
     { form: '20B', number: 'UP1420B•••593', scope: 'Drugs other than those in Schedules C, C(1) and X' },

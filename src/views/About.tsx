@@ -8,7 +8,6 @@ import { site } from '../data/site'
 import { useUI } from '../context/ui'
 import ProductArt from '../components/ProductArt'
 import { Breadcrumbs, PageHero, Reveal, SectionHeading, Tilt } from '../components/primitives'
-import LicenceRequest from '../components/LicenceRequest'
 
 const STEPS = [
   { t: 'Send enquiry', d: 'Share products, strength and quantity by form, call or WhatsApp.' },
@@ -106,8 +105,7 @@ export default function About() {
         <Reveal>
           <p className="eyebrow">Factsheet</p>
           <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Company at a glance</h2>
-          <p className="mt-4 text-muted">Registration and licence details for buyers completing vendor onboarding. Numbers are partly hidden to prevent misuse — licensed buyers can request full copies.</p>
-          <LicenceRequest className="btn-primary mt-6 !py-2.5" />
+          <p className="mt-4 text-muted">Registration and licence details for buyers completing vendor onboarding. Numbers are partly hidden to prevent misuse.</p>
         </Reveal>
         <Reveal delay={0.1}>
           <dl className="overflow-hidden rounded-2xl border border-line">

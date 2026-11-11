@@ -12,7 +12,6 @@ import { useUI } from '../context/ui'
 import { Logo } from './primitives'
 import SearchBox from './SearchBox'
 import WhatsAppIcon from './WhatsAppIcon'
-import LicenceRequest from './LicenceRequest'
 
 const NAV = [
   { to: '/', label: 'Home' },
@@ -199,9 +198,8 @@ function Footer() {
         <div className="container-x flex flex-col gap-3 py-5 text-xs sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
             <p>© {new Date().getFullYear()} Nirmal Lifecare. All rights reserved.</p>
-            <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-white/45">
-              <span>GSTIN {site.gst} · {site.drugLicences.map((l) => `DL ${l.form}: ${l.number}`).join(' · ')}</span>
-              <LicenceRequest className="inline-flex items-center gap-1 font-medium text-amber/90 underline-offset-4 hover:underline [&>svg]:size-3.5" label="Request copies" />
+            <p className="text-white/45">
+              GSTIN {site.gst} · {site.drugLicences.map((l) => `DL ${l.form}: ${l.number}`).join(' · ')}
             </p>
           </div>
           <div className="flex gap-5">
@@ -258,28 +256,62 @@ function MobileActionBar() {
   )
 }
 
-function FloatingActions() {
-  const scrolled = useScrolled(600)
+/** Hover label shared by the floating buttons. */
+function FabLabel({ children }: { children: ReactNode }) {
   return (
-    <div className="fixed bottom-6 right-6 z-40 hidden flex-col items-end gap-3 md:flex">
-      <AnimatePresence>
-        {scrolled && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0.6 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.6 }}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="grid size-11 place-items-center rounded-full border border-line bg-white shadow-lg transition hover:-translate-y-1"
-            aria-label="Back to top"
-          >
-            <ArrowUp className="size-5" />
-          </motion.button>
-        )}
-      </AnimatePresence>
-      <a href={site.whatsappHref} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp" className="group relative grid size-14 place-items-center rounded-full bg-[#25D366] text-white shadow-xl shadow-[#25D366]/40 transition hover:scale-110">
-        <span className="absolute inset-0 animate-ping rounded-full bg-[#25D366] opacity-30" />
-        <WhatsAppIcon className="relative size-7" />
-        <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-ink px-3 py-1.5 text-xs font-medium opacity-0 transition group-hover:opacity-100">Chat on WhatsApp</span>
+    <span className="pointer-events-none absolute right-full top-1/2 mr-3 -translate-y-1/2 translate-x-1 whitespace-nowrap rounded-lg bg-ink px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg transition group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100">
+      {children}
+    </span>
+  )
+}
+
+const RING_R = 25 // ring radius inside a 56 × 56 button
+
+/** Back-to-top button whose ring fills with page scroll progress (full at the bottom). */
+function BackToTop() {
+  const { scrollYProgress } = useScroll()
+  const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 26, restDelta: 0.001 })
+  return (
+    <motion.button
+      initial={{ opacity: 0, scale: 0.6, y: 12 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.6, y: 12 }}
+      transition={{ type: 'spring', stiffness: 320, damping: 24 }}
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      className="group relative grid size-14 place-items-center rounded-full bg-white text-ink shadow-lg shadow-ink/15 ring-1 ring-line transition-colors hover:text-brand"
+      aria-label="Back to top"
+    >
+      <svg viewBox="0 0 56 56" className="absolute inset-0 size-full -rotate-90" aria-hidden="true">
+        <defs>
+          <linearGradient id="fab-ring" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="var(--color-brand)" />
+            <stop offset="60%" stopColor="var(--color-brand-400)" />
+            <stop offset="100%" stopColor="var(--color-amber)" />
+          </linearGradient>
+        </defs>
+        <circle cx="28" cy="28" r={RING_R} fill="none" stroke="var(--color-mist)" strokeWidth="3" />
+        <motion.circle cx="28" cy="28" r={RING_R} fill="none" stroke="url(#fab-ring)" strokeWidth="3" strokeLinecap="round" style={{ pathLength: progress }} />
+      </svg>
+      <ArrowUp className="relative size-5 transition-transform duration-300 group-hover:-translate-y-0.5" />
+      <FabLabel>Back to top</FabLabel>
+    </motion.button>
+  )
+}
+
+function FloatingActions() {
+  const scrolled = useScrolled(400)
+  return (
+    <div className="fixed bottom-6 right-6 z-40 hidden flex-col items-center gap-3 md:flex">
+      <AnimatePresence>{scrolled && <BackToTop />}</AnimatePresence>
+      <a
+        href={site.whatsappHref}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Chat on WhatsApp"
+        className="group relative grid size-14 place-items-center rounded-full bg-[#25D366] text-white shadow-lg shadow-ink/15 ring-1 ring-black/5 transition hover:-translate-y-0.5 hover:bg-[#1fbe5b]"
+      >
+        <WhatsAppIcon className="size-7" />
+        <FabLabel>Chat on WhatsApp</FabLabel>
       </a>
     </div>
   )

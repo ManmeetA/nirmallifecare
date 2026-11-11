@@ -67,14 +67,13 @@ export const privacy: LegalDoc = {
       title: 'What we collect',
       body: (
         <>
-          <p><strong>Information you give us</strong> when you use our enquiry, quote, contact or licence-request forms:</p>
+          <p><strong>Information you give us</strong> when you use our enquiry, quote or contact forms:</p>
           <Ul
             items={[
               'Name and title, firm or pharmacy name, and buyer type (for example pharmacy, hospital or distributor)',
               'Mobile number and, if you provide it, email address',
               'Country, and whether you would like us to contact you on WhatsApp',
               'Your requirement — products, strengths and quantities',
-              'Your drug licence number, when you request copies of our licences',
             ]}
           />
           <p><strong>Information collected automatically.</strong> We do not use analytics, advertising or tracking tools. Our hosting provider records basic technical logs (such as IP address, browser type, the page requested and the time) to keep the website running and secure.</p>
